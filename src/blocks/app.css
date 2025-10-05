@@ -1,5 +1,9 @@
 .app {
-  background-color: blue;
+  background-color: #f3f3f3;
   font-family: "Cabinet Grotesk Bold";
   font-weight: 700;
+}
+
+.app__app-container {
+  margin: 0 auto;
 }

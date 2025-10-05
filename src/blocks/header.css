@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1360px;
+  font-size: 20px;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  width: 89px;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1;
+  margin-right: 24px;
+}
+
+.header__date-location {
+  line-height: 1.2;
+  margin-top: 12px;
+}
+
+.header__button {
+  background-color: transparent;
+  line-height: 1.2;
+  padding: 0;
+  border: none;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.header__user-name {
+  line-height: 1;
+  margin-right: 12px;
+}
