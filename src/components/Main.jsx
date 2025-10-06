@@ -1,5 +1,5 @@
 function Main({ children }) {
-  return <main>{children}</main>;
+  return <main className="app-container__main">{children}</main>;
 }
 
 export default Main;

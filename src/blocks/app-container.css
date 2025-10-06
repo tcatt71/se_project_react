@@ -6,3 +6,7 @@
 .app-container__header {
   margin-bottom: 28px;
 }
+
+.app-container__main {
+  margin-bottom: 24px;
+}
