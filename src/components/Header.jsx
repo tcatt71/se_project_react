@@ -10,7 +10,7 @@ function handleButtonClick() {}
 
 function Header() {
   return (
-    <header className="header">
+    <header className="header app-container__header">
       <div className="header__container">
         <img className="header__logo" src={logo} alt="Logo" />
         <span className="header__date-location">{currentDate}, Renton</span>
