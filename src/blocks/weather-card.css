@@ -1,0 +1,14 @@
+.weather-card {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  max-width: 1360px;
+  height: 80px;
+  background-image: url("./../assets/cloudy.svg");
+  background-position: right;
+  padding-left: 16px;
+}
+
+.weather-card__temperature {
+  color: #ffffff;
+}
