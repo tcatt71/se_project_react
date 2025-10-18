@@ -8,12 +8,14 @@ const currentDate = new Date().toLocaleString("default", {
 
 function handleButtonClick() {}
 
-function Header() {
+function Header({ location }) {
   return (
     <header className="header app-container__header">
       <div className="header__container">
         <img className="header__logo" src={logo} alt="Logo" />
-        <span className="header__date-location">{currentDate}, Renton</span>
+        <span className="header__date-location">
+          {currentDate}, {location}
+        </span>
       </div>
       <div className="header__container">
         <button className="header__button" onClick={handleButtonClick}>
