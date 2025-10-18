@@ -1,7 +1,9 @@
-function WeatherCard() {
+function WeatherCard({ temperature }) {
   return (
     <div className="weather-card">
-      <div className="weather-card__temperature">75&deg;F</div>
+      <div className="weather-card__temperature">
+        {Math.trunc(temperature)}&deg;F
+      </div>
     </div>
   );
 }

@@ -8,13 +8,16 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [location, setLocation] = useState("");
+  const [temperature, setTemperature] = useState(0);
 
   useEffect(() => {
     weatherApi
       .fetchData()
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setLocation(data.name);
+        setTemperature(data.main.temp);
       });
   }, []);
 
@@ -23,7 +26,7 @@ function App() {
       <AppContainer>
         <Header location={location} />
         <Main>
-          <WeatherCard />
+          <WeatherCard temperature={temperature} />
         </Main>
         <Footer />
       </AppContainer>
