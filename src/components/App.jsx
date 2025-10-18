@@ -15,7 +15,6 @@ function App() {
       .fetchData()
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setLocation(data.name);
         setTemperature(data.main.temp);
       });
