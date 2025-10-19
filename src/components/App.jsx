@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [location, setLocation] = useState("");
-  const [temperature, setTemperature] = useState(0);
+  const [temperature, setTemperature] = useState(null);
 
   useEffect(() => {
     weatherApi
