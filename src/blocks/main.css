@@ -1,0 +1,9 @@
+.main {
+}
+
+.main__prompt {
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0;
+  margin: 40px 0 34px;
+}

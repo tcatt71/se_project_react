@@ -31,7 +31,11 @@ function App() {
         <Header location={location} />
         <Main>
           <WeatherCard temperature={temperature} clothingArr={clothingArr} />
-
+          {temperature && (
+            <p className="main__prompt">
+              Today is {Math.trunc(temperature)}&deg; F / You may want to wear:
+            </p>
+          )}
           {clothingArr.map((item) => (
             <ItemCard key={item._id} name={item.name} link={item.link} />
           ))}
