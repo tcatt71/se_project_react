@@ -6,9 +6,13 @@
   height: 80px;
   background-image: url("./../assets/cloudy.svg");
   background-position: right;
+  border-radius: 12px;
   padding-left: 16px;
 }
 
 .weather-card__temperature {
   color: #ffffff;
+  font-size: 36px;
+  line-height: 40px;
+  letter-spacing: 0;
 }
