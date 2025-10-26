@@ -42,7 +42,9 @@ function App() {
             {clothingArr
               .filter((item) => item.weather === condition)
               .map((item) => (
-                <ItemCard key={item._id} name={item.name} link={item.link} />
+                <li className="main__list-item" key={item._id}>
+                  <ItemCard name={item.name} link={item.link} />
+                </li>
               ))}
           </ul>
         </Main>
