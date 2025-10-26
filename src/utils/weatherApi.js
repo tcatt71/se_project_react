@@ -6,4 +6,14 @@ function fetchData() {
   );
 }
 
-export { fetchData };
+function getWeatherCondition(temp) {
+  if (temp >= 86) {
+    return "hot";
+  } else if (temp < 86 && temp >= 66) {
+    return "warm";
+  } else {
+    return "cold";
+  }
+}
+
+export { fetchData, getWeatherCondition };

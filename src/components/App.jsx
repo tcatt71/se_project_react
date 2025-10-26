@@ -25,6 +25,8 @@ function App() {
       });
   }, []);
 
+  const condition = weatherApi.getWeatherCondition(temperature);
+
   return (
     <div className="app">
       <AppContainer>
@@ -37,9 +39,11 @@ function App() {
             </p>
           )}
           <div className="main__card-container">
-            {clothingArr.map((item) => (
-              <ItemCard key={item._id} name={item.name} link={item.link} />
-            ))}
+            {clothingArr
+              .filter((item) => item.weather === condition)
+              .map((item) => (
+                <ItemCard key={item._id} name={item.name} link={item.link} />
+              ))}
           </div>
         </Main>
         <Footer />
