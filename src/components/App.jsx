@@ -36,9 +36,11 @@ function App() {
               Today is {Math.trunc(temperature)}&deg; F / You may want to wear:
             </p>
           )}
-          {clothingArr.map((item) => (
-            <ItemCard key={item._id} name={item.name} link={item.link} />
-          ))}
+          <div className="main__card-container">
+            {clothingArr.map((item) => (
+              <ItemCard key={item._id} name={item.name} link={item.link} />
+            ))}
+          </div>
         </Main>
         <Footer />
       </AppContainer>
