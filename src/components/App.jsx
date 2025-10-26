@@ -38,13 +38,13 @@ function App() {
               Today is {Math.trunc(temperature)}&deg; F / You may want to wear:
             </p>
           )}
-          <div className="main__card-container">
+          <ul className="main__card-container">
             {clothingArr
               .filter((item) => item.weather === condition)
               .map((item) => (
                 <ItemCard key={item._id} name={item.name} link={item.link} />
               ))}
-          </div>
+          </ul>
         </Main>
         <Footer />
       </AppContainer>
