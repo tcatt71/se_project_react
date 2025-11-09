@@ -1,0 +1,58 @@
+.form {
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: #fff;
+  padding: 28px 28px 36px;
+}
+
+.form__title {
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0 0 24px;
+}
+
+.form__label {
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+
+.form__label_block {
+  display: block;
+}
+
+.form__label_gray {
+  color: hsla(0, 0%, 0%, 0.5);
+}
+
+.form__input {
+  width: 440px;
+  font-weight: 700;
+  padding: 0 0 4px;
+  border: none;
+  border-bottom: 1px solid #000;
+  margin: 0 0 24px;
+}
+
+.form__field:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.form__fieldset {
+  padding: 0;
+  border: none;
+  margin: 0 0 32px;
+}
+
+.form__legend {
+  margin-bottom: 12px;
+}
+
+.form__radio-button {
+  accent-color: #000;
+  margin-right: 8px;
+}
+
+.form__radio-button:checked + .form__label {
+  color: #000;
+}

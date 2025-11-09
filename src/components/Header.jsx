@@ -6,9 +6,7 @@ const currentDate = new Date().toLocaleString("default", {
   day: "numeric",
 });
 
-function handleButtonClick() {}
-
-function Header({ location }) {
+function Header({ location, openAddGarmentModal }) {
   return (
     <header className="header app-container__header">
       <div className="header__container">
@@ -18,7 +16,10 @@ function Header({ location }) {
         </span>
       </div>
       <div className="header__container">
-        <button className="header__button" onClick={handleButtonClick}>
+        <button
+          className="button button_type_text"
+          onClick={openAddGarmentModal}
+        >
           + Add clothes
         </button>
         <span className="header__user-name">Terrence Tegegne</span>

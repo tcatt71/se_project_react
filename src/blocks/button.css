@@ -1,0 +1,36 @@
+.button {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.button_type_text {
+  line-height: 1.2;
+  margin-right: 20px;
+}
+
+.button_type_close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  font-size: 20px;
+  color: #0000004d;
+}
+
+.button_type_submit {
+  color: #fff;
+  background-color: #000;
+  font-weight: 700;
+  line-height: 20px;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.button_type_submit:hover {
+  background-color: hsla(0, 0%, 0%, 0.6);
+}
+
+.button_type_submit:disabled {
+  background-color: hsla(0, 0%, 0%, 0.3);
+}
