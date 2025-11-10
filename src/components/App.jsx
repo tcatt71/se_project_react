@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import * as clothingItems from "../utils/clothingItems";
 import ItemCard from "./ItemCard";
 import ModalWithForm from "./ModalWithForm";
+import ItemModal from "./ItemModal";
 
 function App() {
   const [location, setLocation] = useState("");
@@ -16,9 +17,15 @@ function App() {
     clothingItems.defaultClothingItems
   );
   const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
 
   function handleOpenAddGarmentModal() {
     setActiveModal("add-garment");
+  }
+
+  function handleCardClick(cardData) {
+    setActiveModal("item-card");
+    setSelectedCard(cardData);
   }
 
   function handleCloseModal() {
@@ -43,6 +50,10 @@ function App() {
     }
 
     if (activeModal === "add-garment") {
+      document.addEventListener("keyup", handleEscKeyCloseModal);
+    }
+
+    if (activeModal === "item-card") {
       document.addEventListener("keyup", handleEscKeyCloseModal);
     }
 
@@ -75,7 +86,12 @@ function App() {
               .filter((item) => item.weather === condition)
               .map((item) => (
                 <li className="main__list-item" key={item._id}>
-                  <ItemCard name={item.name} link={item.link} />
+                  <ItemCard
+                    name={item.name}
+                    link={item.link}
+                    weather={item.weather}
+                    onClick={handleCardClick}
+                  />
                 </li>
               ))}
           </ul>
@@ -131,6 +147,10 @@ function App() {
           </div>
         </fieldset>
       </ModalWithForm>
+      <ItemModal
+        isOpen={activeModal === "item-card"}
+        selectedCard={selectedCard}
+      ></ItemModal>
     </div>
   );
 }
