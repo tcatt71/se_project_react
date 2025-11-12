@@ -1,4 +1,3 @@
-import AppContainer from "./AppContainer";
 import Header from "./Header";
 import Main from "./Main";
 import WeatherCard from "./WeatherCard";
