@@ -1,14 +1,20 @@
-function ItemModal({ isOpen, selectedCard }) {
+function ItemModal({ isOpen, onClose, selectedCard }) {
   const backgroundImage = {
     backgroundImage: `url(${selectedCard.link})`,
   };
 
   return (
     <div className={`modal ${isOpen ? "modal_isOpened" : ""}`}>
-      <div className="modal__content">
-        <div className="modal__image" style={backgroundImage}></div>
-        <h2 className="modal__title">{selectedCard.name}</h2>
-        <p className="modal__weather">Weather: {selectedCard.weather}</p>
+      <div className="item-modal">
+        <div className="item-modal__image" style={backgroundImage}></div>
+        <button
+          className="button button_type_close button_color_white item-modal__button_type_close"
+          onClick={onClose}
+        >
+          &#10005;
+        </button>
+        <h2 className="item-modal__title">{selectedCard.name}</h2>
+        <p className="item-modal__weather">Weather: {selectedCard.weather}</p>
       </div>
     </div>
   );

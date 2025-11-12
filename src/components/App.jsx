@@ -13,7 +13,7 @@ import ItemModal from "./ItemModal";
 function App() {
   const [location, setLocation] = useState("");
   const [temperature, setTemperature] = useState(null);
-  const [clothingArr, setClothingArr] = useState(
+  const [clothingList, setClothingList] = useState(
     clothingItems.defaultClothingItems
   );
   const [activeModal, setActiveModal] = useState("");
@@ -35,7 +35,11 @@ function App() {
   useEffect(() => {
     weatherApi
       .fetchData()
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
       .then((data) => {
         setLocation(data.name);
         setTemperature(data.main.temp);
@@ -69,35 +73,36 @@ function App() {
 
   return (
     <div className="app">
-      <AppContainer>
+      <div className="app-container app__app-container">
         <Header
           location={location}
           openAddGarmentModal={handleOpenAddGarmentModal}
         />
         <Main>
-          <WeatherCard temperature={temperature} clothingArr={clothingArr} />
-          {temperature && (
+          <WeatherCard temperature={temperature} clothingList={clothingList} />
+          {typeof temperature === "number" && (
             <p className="main__prompt">
               Today is {Math.trunc(temperature)}&deg; F / You may want to wear:
             </p>
           )}
           <ul className="main__card-container">
-            {clothingArr
-              .filter((item) => item.weather === condition)
-              .map((item) => (
-                <li className="main__list-item" key={item._id}>
-                  <ItemCard
-                    name={item.name}
-                    link={item.link}
-                    weather={item.weather}
-                    onClick={handleCardClick}
-                  />
-                </li>
-              ))}
+            {condition &&
+              clothingList
+                .filter((item) => item.weather === condition)
+                .map((item) => (
+                  <li className="main__list-item" key={item._id}>
+                    <ItemCard
+                      name={item.name}
+                      link={item.link}
+                      weather={item.weather}
+                      onClick={handleCardClick}
+                    />
+                  </li>
+                ))}
           </ul>
         </Main>
         <Footer />
-      </AppContainer>
+      </div>
       <ModalWithForm
         isOpen={activeModal === "add-garment"}
         onClose={handleCloseModal}
@@ -106,10 +111,24 @@ function App() {
         name={"add-garment"}
         formSubmitHandler={handleFormSubmit}
       >
-        <label className="form__label form__label_block">Name</label>
-        <input type="text" className="form__input" placeholder="Name" />
-        <label className="form__label form__label_block">Image</label>
-        <input type="url" className="form__input" placeholder="Image URL" />
+        <label className="form__label form__label_block" htmlFor="name">
+          Name
+        </label>
+        <input
+          type="text"
+          className="form__input"
+          id="name"
+          placeholder="Name"
+        />
+        <label className="form__label form__label_block" htmlFor="image">
+          Image
+        </label>
+        <input
+          type="url"
+          className="form__input"
+          id="image"
+          placeholder="Image URL"
+        />
         <fieldset className="form__fieldset">
           <legend className="form__legend">Select the weather type:</legend>
           <div className="form__field">
@@ -149,6 +168,7 @@ function App() {
       </ModalWithForm>
       <ItemModal
         isOpen={activeModal === "item-card"}
+        onClose={handleCloseModal}
         selectedCard={selectedCard}
       ></ItemModal>
     </div>

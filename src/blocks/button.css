@@ -12,10 +12,7 @@
 
 .button_type_close {
   position: absolute;
-  top: 20px;
-  right: 28px;
   font-size: 20px;
-  color: #0000004d;
 }
 
 .button_type_submit {
@@ -33,4 +30,12 @@
 
 .button_type_submit:disabled {
   background-color: hsla(0, 0%, 0%, 0.3);
+}
+
+.button_color_white {
+  color: #fff;
+}
+
+.button_color_gray {
+  color: #0000004d;
 }

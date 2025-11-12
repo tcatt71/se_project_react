@@ -11,6 +11,12 @@
   margin: 0 0 24px;
 }
 
+.form__button_type_close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+}
+
 .form__label {
   font-size: 16px;
   line-height: 20px;

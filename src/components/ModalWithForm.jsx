@@ -18,7 +18,7 @@ function ModalWithForm({
       >
         <h2 className="form__title">{title}</h2>
         <button
-          className="button button_type_close"
+          className="button button_type_close button_color_gray form__button_type_close"
           type="button"
           onClick={onClose}
         >
