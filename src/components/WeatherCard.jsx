@@ -1,7 +1,7 @@
 function WeatherCard({ temperature }) {
   return (
     <div className="weather-card">
-      {temperature && (
+      {typeof temperature === "number" && (
         <div className="weather-card__temperature">
           {Math.trunc(temperature)}&deg;F
         </div>
