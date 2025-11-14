@@ -48,11 +48,7 @@ function App() {
       }
     }
 
-    if (activeModal === "add-garment") {
-      document.addEventListener("keyup", handleEscKeyCloseModal);
-    }
-
-    if (activeModal === "item-card") {
+    if (activeModal) {
       document.addEventListener("keyup", handleEscKeyCloseModal);
     }
 
