@@ -1,11 +1,11 @@
 import Header from "./Header";
 import Main from "./Main";
-import WeatherCard from "./WeatherCard";
+// import WeatherCard from "./WeatherCard";
 import Footer from "./Footer";
 import * as weatherApi from "../utils/weatherApi";
 import { useEffect, useState } from "react";
 import * as clothingItems from "../utils/clothingItems";
-import ItemCard from "./ItemCard";
+// import ItemCard from "./ItemCard";
 import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
 
@@ -69,29 +69,12 @@ function App() {
           location={location}
           openAddGarmentModal={handleOpenAddGarmentModal}
         />
-        <Main>
-          <WeatherCard temperature={temperature} clothingList={clothingList} />
-          {typeof temperature === "number" && (
-            <p className="main__prompt">
-              Today is {Math.trunc(temperature)}&deg; F / You may want to wear:
-            </p>
-          )}
-          <ul className="main__card-container">
-            {condition &&
-              clothingList
-                .filter((item) => item.weather === condition)
-                .map((item) => (
-                  <li className="main__list-item" key={item._id}>
-                    <ItemCard
-                      name={item.name}
-                      link={item.link}
-                      weather={item.weather}
-                      onClick={handleCardClick}
-                    />
-                  </li>
-                ))}
-          </ul>
-        </Main>
+        <Main
+          temperature={temperature}
+          clothingList={clothingList}
+          condition={condition}
+          onCardClick={handleCardClick}
+        ></Main>
         <Footer />
       </div>
       <ModalWithForm
