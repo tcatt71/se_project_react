@@ -6,6 +6,8 @@ function fetchData() {
   ).then((res) => {
     if (res.ok) {
       return res.json();
+    } else {
+      throw new Error(`Server returned ${res.status}`);
     }
   });
 }
