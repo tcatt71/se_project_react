@@ -32,10 +32,13 @@ function App() {
   }
 
   useEffect(() => {
-    weatherApi.fetchData().then((data) => {
-      setLocation(data.name);
-      setTemperature(data.main.temp);
-    });
+    weatherApi
+      .fetchData()
+      .then((data) => {
+        setLocation(data.name);
+        setTemperature(data.main.temp);
+      })
+      .catch((error) => console.error(error));
   }, []);
 
   useEffect(() => {
