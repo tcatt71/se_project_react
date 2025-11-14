@@ -34,11 +34,11 @@ function App() {
   useEffect(() => {
     weatherApi
       .fetchData()
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
+      // .then((res) => {
+      //   if (res.ok) {
+      //     return res.json();
+      //   }
+      // })
       .then((data) => {
         setLocation(data.name);
         setTemperature(data.main.temp);
