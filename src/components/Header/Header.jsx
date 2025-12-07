@@ -1,5 +1,7 @@
-import logo from "./../assets/logo.svg";
-import avatar from "./../assets/avatar.png";
+import logo from "./../../assets/logo.svg";
+import avatar from "./../../assets/avatar.png";
+
+import "./Header.css";
 
 const currentDate = new Date().toLocaleString("default", {
   month: "long",

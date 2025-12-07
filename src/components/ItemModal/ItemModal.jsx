@@ -1,3 +1,6 @@
+import "./ItemModal.css";
+// import "./../Button/Button.css";
+
 function ItemModal({ isOpen, onClose, selectedCard }) {
   const backgroundImage = {
     backgroundImage: `url(${selectedCard.link})`,

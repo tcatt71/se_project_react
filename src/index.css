@@ -1,13 +1,4 @@
 @import url("./vendor/normalize.css");
 @import url("./vendor/fonts.css");
-@import url("./blocks/app.css");
-@import url("./blocks/app-container.css");
-@import url("./blocks/header.css");
-@import url("./blocks/button.css");
-@import url("./blocks/main.css");
-@import url("./blocks/weather-card.css");
-@import url("./blocks/item-card.css");
-@import url("./blocks/footer.css");
-@import url("./blocks/modal.css");
-@import url("./blocks/form.css");
-@import url("./blocks/item-modal.css");
+/* @import url("./components/Button/Button.css"); */
+/* @import url("./components/Form/Form.css"); */

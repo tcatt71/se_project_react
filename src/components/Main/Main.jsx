@@ -1,5 +1,7 @@
-import WeatherCard from "./WeatherCard";
-import ItemCard from "./ItemCard";
+import WeatherCard from "./../WeatherCard/WeatherCard";
+import ItemCard from "./../ItemCard/ItemCard";
+
+import "./Main.css";
 
 function Main({ temperature, clothingList, condition, onCardClick }) {
   return (

@@ -1,13 +1,18 @@
-import Header from "./Header";
-import Main from "./Main";
-// import WeatherCard from "./WeatherCard";
-import Footer from "./Footer";
-import * as weatherApi from "../utils/weatherApi";
 import { useEffect, useState } from "react";
-import * as clothingItems from "../utils/clothingItems";
-// import ItemCard from "./ItemCard";
-import ModalWithForm from "./ModalWithForm";
-import ItemModal from "./ItemModal";
+
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ItemModal from "../ItemModal/ItemModal";
+
+import * as weatherApi from "../../utils/weatherApi";
+import * as clothingItems from "../../utils/clothingItems";
+
+import "./App.css";
+import "./app-container.css";
+import "./../Form/Form.css";
+import "./../Button/Button.css";
 
 function App() {
   const [location, setLocation] = useState("");

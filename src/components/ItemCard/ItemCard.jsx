@@ -1,3 +1,5 @@
+import "./ItemCard.css";
+
 function ItemCard({ name, link, weather, onClick }) {
   const backgroundImage = {
     backgroundImage: `url(${link})`,
