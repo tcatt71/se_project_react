@@ -22,6 +22,7 @@ function App() {
   );
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   function handleOpenAddGarmentModal() {
     setActiveModal("add-garment");
