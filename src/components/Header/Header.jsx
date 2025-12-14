@@ -1,3 +1,5 @@
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+
 import logo from "./../../assets/logo.svg";
 import avatar from "./../../assets/avatar.png";
 
@@ -18,6 +20,7 @@ function Header({ location, openAddGarmentModal }) {
         </span>
       </div>
       <div className="header__container">
+        <ToggleSwitch />
         <button
           className="button button_type_text"
           onClick={openAddGarmentModal}
