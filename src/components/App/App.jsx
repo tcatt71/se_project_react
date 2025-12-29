@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import currentTemperatureUnitContext from "./../contexts/CurrentTemperatureUnitContext";
+import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -16,8 +16,11 @@ import "./../Form/Form.css";
 import "./../Button/Button.css";
 
 function App() {
-  const [location, setLocation] = useState("");
-  const [temperature, setTemperature] = useState(null);
+  const [weatherData, setWeatherData] = useState({
+    location: "",
+    temperature: { C: null, F: null },
+  });
+
   const [clothingList, setClothingList] = useState(
     clothingItems.defaultClothingItems
   );
@@ -25,25 +28,17 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
-  function handleOpenAddGarmentModal() {
-    setActiveModal("add-garment");
-  }
-
-  function handleCardClick(cardData) {
-    setActiveModal("item-card");
-    setSelectedCard(cardData);
-  }
-
-  function handleCloseModal() {
-    setActiveModal("");
-  }
-
   useEffect(() => {
     weatherApi
       .fetchData()
       .then((data) => {
-        setLocation(data.name);
-        setTemperature(data.main.temp);
+        setWeatherData({
+          location: data.name,
+          temperature: {
+            F: data.main.temp,
+            C: Math.round(((data.main.temp - 32) * 5) / 9),
+          },
+        });
       })
       .catch((error) => console.error(error));
   }, []);
@@ -62,25 +57,44 @@ function App() {
     return () => document.removeEventListener("keyup", handleEscKeyCloseModal);
   }, [activeModal]);
 
-  const condition = weatherApi.getWeatherCondition(temperature);
+  function handleOpenAddGarmentModal() {
+    setActiveModal("add-garment");
+  }
+
+  function handleCardClick(cardData) {
+    setActiveModal("item-card");
+    setSelectedCard(cardData);
+  }
+
+  function handleCloseModal() {
+    setActiveModal("");
+  }
 
   function handleFormSubmit(evt) {
     evt.preventDefault();
     handleCloseModal();
   }
 
+  function handleToggleSwitchChange() {
+    currentTemperatureUnit === "F"
+      ? setCurrentTemperatureUnit("C")
+      : setCurrentTemperatureUnit("F");
+  }
+
+  const condition = weatherApi.getWeatherCondition(weatherData.temperature);
+
   return (
     <div className="app">
-      <currentTemperatureUnitContext.Provider
+      <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <div className="app-container app__app-container">
           <Header
-            location={location}
+            location={weatherData.location}
             openAddGarmentModal={handleOpenAddGarmentModal}
           />
           <Main
-            temperature={temperature}
+            temperature={weatherData.temperature}
             clothingList={clothingList}
             condition={condition}
             onCardClick={handleCardClick}
@@ -155,7 +169,7 @@ function App() {
           onClose={handleCloseModal}
           selectedCard={selectedCard}
         ></ItemModal>
-      </currentTemperatureUnitContext.Provider>
+      </CurrentTemperatureUnitContext.Provider>
     </div>
   );
 }
