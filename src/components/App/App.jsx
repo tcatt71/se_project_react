@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
 
+import { Routes, Route } from "react-router-dom";
+
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -93,12 +95,20 @@ function App() {
             location={weatherData.location}
             openAddGarmentModal={handleOpenAddGarmentModal}
           />
-          <Main
-            temperature={weatherData.temperature}
-            clothingList={clothingList}
-            condition={condition}
-            onCardClick={handleCardClick}
-          ></Main>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  temperature={weatherData.temperature}
+                  clothingList={clothingList}
+                  condition={condition}
+                  onCardClick={handleCardClick}
+                />
+              }
+            />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
           <Footer />
         </div>
         <ModalWithForm
