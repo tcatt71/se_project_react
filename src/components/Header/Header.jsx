@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 import logo from "./../../assets/logo.svg";
@@ -14,7 +16,9 @@ function Header({ location, openAddGarmentModal }) {
   return (
     <header className="header app-container__header">
       <div className="header__container">
-        <img className="header__logo" src={logo} alt="Logo" />
+        <Link to="/">
+          <img className="header__logo" src={logo} alt="Logo" />
+        </Link>
         <span className="header__date-location">
           {currentDate}, {location}
         </span>
@@ -27,7 +31,9 @@ function Header({ location, openAddGarmentModal }) {
         >
           + Add clothes
         </button>
-        <span className="header__user-name">Terrence Tegegne</span>
+        <Link to="/profile">
+          <span className="header__user-name">Terrence Tegegne</span>
+        </Link>
         <img className="header__avatar" src={avatar} alt="User" />
       </div>
     </header>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -8,6 +7,9 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
+import Profile from "../Profile/Profile";
+
+import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
 
 import * as weatherApi from "../../utils/weatherApi";
 import * as clothingItems from "../../utils/clothingItems";
