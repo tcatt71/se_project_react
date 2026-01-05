@@ -6,6 +6,7 @@ import ItemCard from "./../ItemCard/ItemCard";
 import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
 
 import "./Main.css";
+import "./../../layout/card-container.css";
 
 function Main({ temperature, clothingList, condition, onCardClick }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
@@ -19,7 +20,7 @@ function Main({ temperature, clothingList, condition, onCardClick }) {
           {currentTemperatureUnit} / You may want to wear:
         </p>
       )}
-      <ul className="main__card-container">
+      <ul className="card-container">
         {condition &&
           clothingList
             .filter((item) => item.weather === condition)

@@ -1,5 +1,15 @@
+import SideBar from "../SideBar/SideBar";
+import ClothesSection from "../ClothesSection/ClothesSection";
+
+import "./profile.css";
+
 function Profile() {
-  return <>Test</>;
+  return (
+    <div className="profile">
+      <SideBar />
+      <ClothesSection />
+    </div>
+  );
 }
 
 export default Profile;
