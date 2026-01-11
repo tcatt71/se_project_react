@@ -22,7 +22,12 @@
   margin-top: 12px;
 }
 
+.header__link-wrapper {
+  text-decoration: none;
+}
+
 .header__user-name {
+  color: #000;
   line-height: 1;
   margin-right: 12px;
 }

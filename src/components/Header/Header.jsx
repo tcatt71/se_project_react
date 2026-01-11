@@ -31,7 +31,7 @@ function Header({ location, openAddGarmentModal }) {
         >
           + Add clothes
         </button>
-        <Link to="/profile">
+        <Link to="/profile" className="header__link-wrapper">
           <span className="header__user-name">Terrence Tegegne</span>
         </Link>
         <img className="header__avatar" src={avatar} alt="User" />
