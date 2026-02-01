@@ -16,6 +16,7 @@ function Header({ location, openAddGarmentModal }) {
   return (
     <header className="header app-container__header">
       <div className="header__container">
+        <h1 className="header__title">What To Wear App</h1>
         <Link to="/">
           <img className="header__logo" src={logo} alt="Logo" />
         </Link>
@@ -26,7 +27,7 @@ function Header({ location, openAddGarmentModal }) {
       <div className="header__container">
         <ToggleSwitch />
         <button
-          className="button button_type_text"
+          className="button button_type_text header__button"
           onClick={openAddGarmentModal}
         >
           + Add clothes

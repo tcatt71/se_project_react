@@ -9,6 +9,14 @@
   align-items: center;
 }
 
+.header__title {
+  position: absolute;
+  left: -10000px;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .header__logo {
   width: 89px;
   font-size: 32px;
@@ -20,6 +28,10 @@
 .header__date-location {
   line-height: 1.2;
   margin-top: 12px;
+}
+
+.header__button {
+  margin-right: 20px;
 }
 
 .header__link-wrapper {
