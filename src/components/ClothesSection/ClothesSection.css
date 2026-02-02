@@ -1,0 +1,15 @@
+.clothes-section {
+  /* display: flex; */
+}
+
+.clothes-section__header {
+  display: flex;
+}
+
+.clothes-section__title {
+  font-size: 20px;
+}
+
+.clothes-section__button {
+  margin-left: 20px;
+}

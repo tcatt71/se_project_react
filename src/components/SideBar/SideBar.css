@@ -1,0 +1,15 @@
+.side-bar {
+  display: flex;
+  align-items: center;
+  width: 345px;
+}
+
+.side-bar__avatar {
+  width: 56px;
+  height: 56px;
+  padding-right: 16px;
+}
+
+.side-bar__user-name {
+  line-height: 1;
+}
