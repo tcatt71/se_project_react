@@ -1,15 +1,15 @@
-.clothes-section {
-  /* display: flex; */
-}
-
 .clothes-section__header {
   display: flex;
+  align-items: center;
+  height: 56px;
 }
 
 .clothes-section__title {
   font-size: 20px;
+  margin: 0 20px 0 0;
 }
 
-.clothes-section__button {
-  margin-left: 20px;
+.clothes-section__card-container {
+  margin-top: 0;
+  margin-bottom: 80px;
 }

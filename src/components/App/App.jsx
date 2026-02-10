@@ -26,7 +26,7 @@ function App() {
   });
 
   const [clothingList, setClothingList] = useState(
-    clothingItems.defaultClothingItems
+    clothingItems.defaultClothingItems,
   );
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -92,7 +92,8 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-        <div className="app-container app__app-container">
+        <div className="app__container">
+          {/* <div className="app-container app__app-container"> */}
           <Header
             location={weatherData.location}
             openAddGarmentModal={handleOpenAddGarmentModal}
@@ -109,7 +110,15 @@ function App() {
                 />
               }
             />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  clothingList={clothingList}
+                  onCardClick={handleCardClick}
+                />
+              }
+            />
           </Routes>
           <Footer />
         </div>

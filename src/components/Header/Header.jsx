@@ -14,7 +14,7 @@ const currentDate = new Date().toLocaleString("default", {
 
 function Header({ location, openAddGarmentModal }) {
   return (
-    <header className="header app-container__header">
+    <header className="header app__header">
       <div className="header__container">
         <h1 className="header__title">What To Wear App</h1>
         <Link to="/">
@@ -35,7 +35,7 @@ function Header({ location, openAddGarmentModal }) {
         <Link to="/profile" className="header__link-wrapper">
           <span className="header__user-name">Terrence Tegegne</span>
         </Link>
-        <img className="header__avatar" src={avatar} alt="User" />
+        <img src={avatar} alt="User" />
       </div>
     </header>
   );

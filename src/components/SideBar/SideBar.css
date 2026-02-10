@@ -1,7 +1,10 @@
 .side-bar {
+  flex: 0 0 345px;
+}
+
+.side-bar__container {
   display: flex;
   align-items: center;
-  width: 345px;
 }
 
 .side-bar__avatar {

@@ -1,13 +1,13 @@
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
-import "./profile.css";
+import "./Profile.css";
 
-function Profile() {
+function Profile({ clothingList, onCardClick }) {
   return (
     <div className="profile">
       <SideBar />
-      <ClothesSection />
+      <ClothesSection clothingList={clothingList} onCardClick={onCardClick} />
     </div>
   );
 }

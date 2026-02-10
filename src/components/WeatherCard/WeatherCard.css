@@ -4,7 +4,7 @@
   align-items: center;
   height: 80px;
   background-image: url("./../../assets/cloudy.svg");
-  background-position: right;
+  background-size: cover;
   border-radius: 12px;
   padding-left: 16px;
 }

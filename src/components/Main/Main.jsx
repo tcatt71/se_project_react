@@ -12,7 +12,7 @@ function Main({ temperature, clothingList, condition, onCardClick }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   return (
-    <main className="main app-container__main">
+    <main className="app__main">
       <WeatherCard temperature={temperature} clothingList={clothingList} />
       {typeof temperature[currentTemperatureUnit] === "number" && (
         <p className="main__prompt">
@@ -20,7 +20,7 @@ function Main({ temperature, clothingList, condition, onCardClick }) {
           {currentTemperatureUnit} / You may want to wear:
         </p>
       )}
-      <ul className="card-container">
+      <ul className="card-container main__card-container">
         {condition &&
           clothingList
             .filter((item) => item.weather === condition)
