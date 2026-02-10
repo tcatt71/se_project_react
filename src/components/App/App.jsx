@@ -15,7 +15,6 @@ import * as weatherApi from "../../utils/weatherApi";
 import * as clothingItems from "../../utils/clothingItems";
 
 import "./App.css";
-import "./app-container.css";
 import "./../Form/Form.css";
 import "./../Button/Button.css";
 
@@ -93,7 +92,6 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <div className="app__container">
-          {/* <div className="app-container app__app-container"> */}
           <Header
             location={weatherData.location}
             openAddGarmentModal={handleOpenAddGarmentModal}
