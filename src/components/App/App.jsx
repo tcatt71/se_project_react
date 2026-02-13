@@ -72,8 +72,10 @@ function App() {
     setActiveModal("");
   }
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
+  function handleAddItemSubmit(newClothing) {
+    console.log(newClothing);
+    // setClothingList([newClothing, ...clothingList]);
+    // console.log(clothingList);
     handleCloseModal();
   }
 
@@ -125,8 +127,7 @@ function App() {
         <AddItemModal
           isOpen={activeModal === "add-garment"}
           onClose={handleCloseModal}
-          onSubmit={handleSubmit}
-          onAddItem={handleAddItem}
+          onAddItem={handleAddItemSubmit}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>

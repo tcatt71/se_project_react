@@ -4,23 +4,28 @@ import { useForm } from "../../hooks/useForm";
 
 import "./../Form/Form.css";
 
-function AddItemModal({ isOpen, onAddItem, onClose, onSubmit }) {
+function AddItemModal({ isOpen, onAddItem, onClose }) {
   const { values, handleChange } = useForm({
     item: "",
     url: "",
     weather: "",
   });
 
+  function handleSubmit(e, item) {
+    e.preventDefault();
+    onAddItem(item);
+  }
+
   return (
     <ModalWithForm
       isOpen={isOpen}
-      onAddItem={onAddItem}
       onClose={onClose}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
       // onReset={handleReset}
       title={"New garment"}
       buttonText={"Add garment"}
       name={"add-garment"}
+      values={values}
     >
       <label className="form__label form__label_block" htmlFor="name">
         Name
