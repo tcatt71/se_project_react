@@ -1,4 +1,5 @@
 import "./ModalWithForm.css";
+import "./../Form/Form.css";
 
 function ModalWithForm({
   isOpen,
@@ -7,17 +8,13 @@ function ModalWithForm({
   name,
   buttonText,
   children,
-  formSubmitHandler,
+  onSubmit,
 }) {
   return (
     <div
       className={`modal ${isOpen ? "modal_isOpened" : ""} modal_type_${name}`}
     >
-      <form
-        className="form modal__form"
-        name={name}
-        onSubmit={formSubmitHandler}
-      >
+      <form className="form modal__form" name={name} onSubmit={onSubmit}>
         <h2 className="form__title">{title}</h2>
         <button
           className="button button_type_close button_color_gray form__button_type_close"

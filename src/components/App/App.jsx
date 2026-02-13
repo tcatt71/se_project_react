@@ -5,9 +5,9 @@ import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
+import AddItemModal from "../AddItemModal/AddItemModal";
 
 import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
 
@@ -15,7 +15,6 @@ import * as weatherApi from "../../utils/weatherApi";
 import * as clothingItems from "../../utils/clothingItems";
 
 import "./App.css";
-import "./../Form/Form.css";
 import "./../Button/Button.css";
 
 function App() {
@@ -60,7 +59,7 @@ function App() {
     return () => document.removeEventListener("keyup", handleEscKeyCloseModal);
   }, [activeModal]);
 
-  function handleOpenAddGarmentModal() {
+  function handleAddItem() {
     setActiveModal("add-garment");
   }
 
@@ -73,7 +72,7 @@ function App() {
     setActiveModal("");
   }
 
-  function handleFormSubmit(evt) {
+  function handleSubmit(evt) {
     evt.preventDefault();
     handleCloseModal();
   }
@@ -92,10 +91,7 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <div className="app__container">
-          <Header
-            location={weatherData.location}
-            openAddGarmentModal={handleOpenAddGarmentModal}
-          />
+          <Header location={weatherData.location} onAddItem={handleAddItem} />
           <Routes>
             <Route
               path="/"
@@ -114,80 +110,24 @@ function App() {
                 <Profile
                   clothingList={clothingList}
                   onCardClick={handleCardClick}
+                  onAddItem={handleAddItem}
                 />
               }
             />
           </Routes>
           <Footer />
         </div>
-        <ModalWithForm
-          isOpen={activeModal === "add-garment"}
-          onClose={handleCloseModal}
-          title={"New garment"}
-          buttonText={"Add garment"}
-          name={"add-garment"}
-          formSubmitHandler={handleFormSubmit}
-        >
-          <label className="form__label form__label_block" htmlFor="name">
-            Name
-          </label>
-          <input
-            type="text"
-            className="form__input"
-            id="name"
-            placeholder="Name"
-          />
-          <label className="form__label form__label_block" htmlFor="image">
-            Image
-          </label>
-          <input
-            type="url"
-            className="form__input"
-            id="image"
-            placeholder="Image URL"
-          />
-          <fieldset className="form__fieldset">
-            <legend className="form__legend">Select the weather type:</legend>
-            <div className="form__field">
-              <input
-                type="radio"
-                className="form__radio-button"
-                name="temp-range"
-                id="hot"
-              />
-              <label htmlFor="hot" className="form__label form__label_gray">
-                Hot
-              </label>
-            </div>
-            <div className="form__field">
-              <input
-                type="radio"
-                className="form__radio-button"
-                name="temp-range"
-                id="warm"
-              />
-              <label htmlFor="warm" className="form__label form__label_gray">
-                Warm
-              </label>
-            </div>
-            <div className="form__field">
-              <input
-                type="radio"
-                className="form__radio-button"
-                name="temp-range"
-                id="cold"
-              />
-              <label htmlFor="cold" className="form__label form__label_gray">
-                Cold
-              </label>
-            </div>
-          </fieldset>
-        </ModalWithForm>
         <ItemModal
           isOpen={activeModal === "item-card"}
           onClose={handleCloseModal}
           selectedCard={selectedCard}
         ></ItemModal>
+        <AddItemModal
+          isOpen={activeModal === "add-garment"}
+          onClose={handleCloseModal}
+          onSubmit={handleSubmit}
+          onAddItem={handleAddItem}
+        />
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

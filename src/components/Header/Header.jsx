@@ -12,7 +12,7 @@ const currentDate = new Date().toLocaleString("default", {
   day: "numeric",
 });
 
-function Header({ location, openAddGarmentModal }) {
+function Header({ location, onAddItem }) {
   return (
     <header className="header app__header">
       <div className="header__container">
@@ -28,7 +28,7 @@ function Header({ location, openAddGarmentModal }) {
         <ToggleSwitch />
         <button
           className="button button_type_text header__button"
-          onClick={openAddGarmentModal}
+          onClick={onAddItem}
         >
           + Add clothes
         </button>
