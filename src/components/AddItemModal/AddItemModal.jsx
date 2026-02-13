@@ -5,15 +5,15 @@ import { useForm } from "../../hooks/useForm";
 import "./../Form/Form.css";
 
 function AddItemModal({ isOpen, onAddItem, onClose }) {
-  const { values, handleChange } = useForm({
+  const { values, handleChange, handleReset } = useForm({
     item: "",
     url: "",
     weather: "",
   });
 
-  function handleSubmit(e, item) {
+  function handleSubmit(e) {
     e.preventDefault();
-    onAddItem(item);
+    onAddItem(values, handleReset);
   }
 
   return (
@@ -21,11 +21,9 @@ function AddItemModal({ isOpen, onAddItem, onClose }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      // onReset={handleReset}
       title={"New garment"}
       buttonText={"Add garment"}
       name={"add-garment"}
-      values={values}
     >
       <label className="form__label form__label_block" htmlFor="name">
         Name

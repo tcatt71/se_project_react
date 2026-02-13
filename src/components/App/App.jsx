@@ -72,11 +72,12 @@ function App() {
     setActiveModal("");
   }
 
-  function handleAddItemSubmit(newClothing) {
+  function handleAddItemSubmit(newClothing, resetForm) {
     console.log(newClothing);
     // setClothingList([newClothing, ...clothingList]);
     // console.log(clothingList);
     handleCloseModal();
+    resetForm();
   }
 
   function handleToggleSwitchChange() {

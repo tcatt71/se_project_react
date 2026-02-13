@@ -9,7 +9,6 @@ function ModalWithForm({
   buttonText,
   children,
   onSubmit,
-  values,
 }) {
   return (
     <div
@@ -18,7 +17,7 @@ function ModalWithForm({
       <form
         className="form modal__form"
         name={name}
-        onSubmit={(e) => onSubmit(e, values)}
+        onSubmit={(e) => onSubmit(e)}
       >
         <h2 className="form__title">{title}</h2>
         <button
