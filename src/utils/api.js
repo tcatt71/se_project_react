@@ -10,4 +10,16 @@ function getItems() {
   });
 }
 
-export { getItems };
+function deleteItem(id) {
+  return fetch(`${baseUrl}/items/${id}`, {
+    method: "DELETE",
+  }).then((res) => {
+    if (!res.ok) {
+      throw new Error(res.status);
+    } else {
+      return id;
+    }
+  });
+}
+
+export { getItems, deleteItem };
