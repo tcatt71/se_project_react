@@ -22,4 +22,17 @@ function deleteItem(id) {
   });
 }
 
-export { getItems, deleteItem };
+function postItem(item) {
+  return fetch(`${baseUrl}/items`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(item),
+  }).then((res) => {
+    if (!res.ok) {
+      throw new Error(`Could not POST new item: ${res.status}`);
+    }
+    return item;
+  });
+}
+
+export { getItems, deleteItem, postItem };
