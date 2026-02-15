@@ -15,7 +15,7 @@ function deleteItem(id) {
     method: "DELETE",
   }).then((res) => {
     if (!res.ok) {
-      throw new Error(res.status);
+      throw new Error(`Failed to delete item: ${res.status}`);
     } else {
       return id;
     }
@@ -29,7 +29,7 @@ function postItem(item) {
     body: JSON.stringify(item),
   }).then((res) => {
     if (!res.ok) {
-      throw new Error(`Could not POST new item: ${res.status}`);
+      throw new Error(`Failed to POST new item: ${res.status}`);
     }
     return item;
   });
