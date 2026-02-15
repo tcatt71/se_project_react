@@ -12,7 +12,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
 
 import * as weatherApi from "../../utils/weatherApi";
-import * as clothingItems from "../../utils/clothingItems";
+import { getItems } from "../../utils/api";
 
 import "./App.css";
 import "./../Button/Button.css";
@@ -22,15 +22,16 @@ function App() {
     location: "",
     temperature: { C: null, F: null },
   });
-
-  const [clothingList, setClothingList] = useState(
-    clothingItems.defaultClothingItems,
-  );
+  const [clothingList, setClothingList] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   useEffect(() => {
+    getItems()
+      .then((data) => setClothingList(data))
+      .catch((err) => console.error(err.message));
+
     weatherApi
       .fetchData()
       .then((data) => {

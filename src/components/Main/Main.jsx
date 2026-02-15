@@ -28,7 +28,7 @@ function Main({ temperature, clothingList, condition, onCardClick }) {
               <li className="main__list-item" key={item._id}>
                 <ItemCard
                   name={item.name}
-                  link={item.link}
+                  link={item.imageUrl}
                   weather={item.weather}
                   onClick={onCardClick}
                 />
