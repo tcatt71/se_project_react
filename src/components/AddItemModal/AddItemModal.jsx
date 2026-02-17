@@ -33,7 +33,7 @@ function AddItemModal({ isOpen, onAddItem, onClose }) {
         type="text"
         id="name"
         name="name"
-        value={values.item}
+        value={values.name}
         placeholder="Name"
         onChange={handleChange}
       />
@@ -45,7 +45,7 @@ function AddItemModal({ isOpen, onAddItem, onClose }) {
         type="url"
         id="image"
         name="imageUrl"
-        value={values.url}
+        value={values.imageUrl}
         placeholder="Image URL"
         onChange={handleChange}
       />
