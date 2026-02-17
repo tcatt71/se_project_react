@@ -299,6 +299,12 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
       "weather": "hot",
       "_id": 49
+    },
+    {
+      "name": "a",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
+      "weather": "warm",
+      "_id": 50
     }
   ]
 }

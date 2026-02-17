@@ -15,8 +15,20 @@ function ItemModal({ isOpen, onClose, selectedCard }) {
         >
           &#10005;
         </button>
-        <h2 className="item-modal__title">{selectedCard.name}</h2>
-        <p className="item-modal__weather">Weather: {selectedCard.weather}</p>
+        <div className="item-modal__footer">
+          <div>
+            <h2 className="item-modal__title">{selectedCard.name}</h2>
+            <p className="item-modal__weather">
+              Weather: {selectedCard.weather}
+            </p>
+          </div>
+          <button
+            type="button"
+            className="button button_color_red item-modal__delete-button"
+          >
+            Delete item
+          </button>
+        </div>
       </div>
     </div>
   );
