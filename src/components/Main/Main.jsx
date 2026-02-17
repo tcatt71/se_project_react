@@ -31,7 +31,7 @@ function Main({ temperature, clothingItems, condition, onCardClick }) {
                   name={item.name}
                   link={item.imageUrl}
                   weather={item.weather}
-                  onClick={onCardClick}
+                  onCardClick={onCardClick}
                 />
               </li>
             ))}

@@ -1,6 +1,6 @@
 import "./ItemModal.css";
 
-function ItemModal({ isOpen, onClose, selectedCard }) {
+function ItemModal({ isOpen, onClose, selectedCard, onDeleteItem }) {
   const backgroundImage = {
     backgroundImage: `url(${selectedCard.link})`,
   };
@@ -25,6 +25,7 @@ function ItemModal({ isOpen, onClose, selectedCard }) {
           <button
             type="button"
             className="button button_color_red item-modal__delete-button"
+            onClick={() => onDeleteItem(selectedCard.itemId)}
           >
             Delete item
           </button>

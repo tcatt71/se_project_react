@@ -12,7 +12,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
 
 import * as weatherApi from "../../utils/weatherApi";
-import { getItems, addItem } from "../../utils/api";
+import { getItems, addItem, deleteItem } from "../../utils/api";
 
 import "./App.css";
 import "./../Button/Button.css";
@@ -89,6 +89,18 @@ function App() {
       : setCurrentTemperatureUnit("F");
   }
 
+  function handleDeleteItem(id) {
+    deleteItem(id)
+      .then(() => {
+        const newClothingItems = clothingItems.filter(
+          (item) => item._id !== id,
+        );
+        setClothingItems(newClothingItems);
+        handleCloseModal();
+      })
+      .catch((err) => console.error(err.message));
+  }
+
   const condition = weatherApi.getWeatherCondition(weatherData.temperature);
 
   return (
@@ -127,6 +139,7 @@ function App() {
           isOpen={activeModal === "item-card"}
           onClose={handleCloseModal}
           selectedCard={selectedCard}
+          onDeleteItem={handleDeleteItem}
         ></ItemModal>
         <AddItemModal
           isOpen={activeModal === "add-garment"}

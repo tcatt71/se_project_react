@@ -24,7 +24,7 @@ function ClothesSection({ clothingItems, onCardClick, onAddItem }) {
               name={item.name}
               link={item.imageUrl}
               weather={item.weather}
-              onClick={onCardClick}
+              onCardClick={onCardClick}
             />
           </li>
         ))}

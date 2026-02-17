@@ -17,7 +17,7 @@ function deleteItem(id) {
     if (!res.ok) {
       throw new Error(`Failed to delete item: ${res.status}`);
     } else {
-      return id;
+      return res.json();
     }
   });
 }
