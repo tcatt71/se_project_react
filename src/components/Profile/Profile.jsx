@@ -3,12 +3,12 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 
 import "./Profile.css";
 
-function Profile({ clothingList, onCardClick, onAddItem }) {
+function Profile({ clothingItems, onCardClick, onAddItem }) {
   return (
     <div className="profile">
       <SideBar />
       <ClothesSection
-        clothingList={clothingList}
+        clothingItems={clothingItems}
         onCardClick={onCardClick}
         onAddItem={onAddItem}
       />

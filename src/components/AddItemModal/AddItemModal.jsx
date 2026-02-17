@@ -6,8 +6,8 @@ import "./../Form/Form.css";
 
 function AddItemModal({ isOpen, onAddItem, onClose }) {
   const { values, handleChange, handleReset } = useForm({
-    item: "",
-    url: "",
+    name: "",
+    imageUrl: "",
     weather: "",
   });
 
@@ -32,7 +32,7 @@ function AddItemModal({ isOpen, onAddItem, onClose }) {
         className="form__input"
         type="text"
         id="name"
-        name="item"
+        name="name"
         value={values.item}
         placeholder="Name"
         onChange={handleChange}
@@ -44,7 +44,7 @@ function AddItemModal({ isOpen, onAddItem, onClose }) {
         className="form__input"
         type="url"
         id="image"
-        name="url"
+        name="imageUrl"
         value={values.url}
         placeholder="Image URL"
         onChange={handleChange}

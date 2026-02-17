@@ -3,7 +3,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 import "./../../layout/card-container.css";
 
-function ClothesSection({ clothingList, onCardClick, onAddItem }) {
+function ClothesSection({ clothingItems, onCardClick, onAddItem }) {
   return (
     <div>
       <header className="clothes-section__header">
@@ -17,9 +17,10 @@ function ClothesSection({ clothingList, onCardClick, onAddItem }) {
         </button>
       </header>
       <ul className="card-container clothes-section__card-container">
-        {clothingList.map((item) => (
+        {clothingItems.map((item) => (
           <li className="main__list-item" key={item._id}>
             <ItemCard
+              itemId={item._id}
               name={item.name}
               link={item.imageUrl}
               weather={item.weather}

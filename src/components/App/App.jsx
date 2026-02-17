@@ -12,7 +12,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
 
 import * as weatherApi from "../../utils/weatherApi";
-import { getItems } from "../../utils/api";
+import { getItems, addItem } from "../../utils/api";
 
 import "./App.css";
 import "./../Button/Button.css";
@@ -22,14 +22,14 @@ function App() {
     location: "",
     temperature: { C: null, F: null },
   });
-  const [clothingList, setClothingList] = useState([]);
+  const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   useEffect(() => {
     getItems()
-      .then((data) => setClothingList(data))
+      .then((data) => setClothingItems(data))
       .catch((err) => console.error(err.message));
 
     weatherApi
@@ -74,9 +74,12 @@ function App() {
   }
 
   function handleAddItemSubmit(newClothing, resetForm) {
-    console.log(newClothing);
-    // setClothingList([newClothing, ...clothingList]);
-    // console.log(clothingList);
+    addItem(newClothing)
+      .then((item) => {
+        console.log(item);
+        setClothingItems([item, ...clothingItems]);
+      })
+      .catch((err) => console.error(err.message));
     handleCloseModal();
     resetForm();
   }
@@ -102,7 +105,7 @@ function App() {
               element={
                 <Main
                   temperature={weatherData.temperature}
-                  clothingList={clothingList}
+                  clothingItems={clothingItems}
                   condition={condition}
                   onCardClick={handleCardClick}
                 />
@@ -112,7 +115,7 @@ function App() {
               path="/profile"
               element={
                 <Profile
-                  clothingList={clothingList}
+                  clothingItems={clothingItems}
                   onCardClick={handleCardClick}
                   onAddItem={handleAddItem}
                 />

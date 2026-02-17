@@ -8,12 +8,12 @@ import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatu
 import "./Main.css";
 import "./../../layout/card-container.css";
 
-function Main({ temperature, clothingList, condition, onCardClick }) {
+function Main({ temperature, clothingItems, condition, onCardClick }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   return (
     <main className="app__main">
-      <WeatherCard temperature={temperature} clothingList={clothingList} />
+      <WeatherCard temperature={temperature} clothingItems={clothingItems} />
       {typeof temperature[currentTemperatureUnit] === "number" && (
         <p className="main__prompt">
           Today is {Math.trunc(temperature[currentTemperatureUnit])}&deg;{" "}
@@ -22,11 +22,12 @@ function Main({ temperature, clothingList, condition, onCardClick }) {
       )}
       <ul className="card-container main__card-container">
         {condition &&
-          clothingList
+          clothingItems
             .filter((item) => item.weather === condition)
             .map((item) => (
               <li className="main__list-item" key={item._id}>
                 <ItemCard
+                  itemId={item._id}
                   name={item.name}
                   link={item.imageUrl}
                   weather={item.weather}

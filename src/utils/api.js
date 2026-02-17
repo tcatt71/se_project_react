@@ -22,7 +22,7 @@ function deleteItem(id) {
   });
 }
 
-function postItem(item) {
+function addItem(item) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -31,8 +31,8 @@ function postItem(item) {
     if (!res.ok) {
       throw new Error(`Failed to POST new item: ${res.status}`);
     }
-    return item;
+    return res.json();
   });
 }
 
-export { getItems, deleteItem, postItem };
+export { getItems, deleteItem, addItem };

@@ -1,6 +1,6 @@
 import "./ItemCard.css";
 
-function ItemCard({ name, link, weather, onClick }) {
+function ItemCard({ itemId, name, link, weather, onClick }) {
   const backgroundImage = {
     backgroundImage: `url(${link})`,
   };
@@ -9,7 +9,7 @@ function ItemCard({ name, link, weather, onClick }) {
     <div
       className="item-card"
       style={backgroundImage}
-      onClick={() => onClick({ name, link, weather })}
+      onClick={() => onClick({ itemId, name, link, weather })}
     >
       <h2 className="item-card__title">{name}</h2>
     </div>
