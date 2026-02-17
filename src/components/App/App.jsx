@@ -76,7 +76,6 @@ function App() {
   function handleAddItemSubmit(newClothing, resetForm) {
     addItem(newClothing)
       .then((item) => {
-        console.log(item);
         setClothingItems([item, ...clothingItems]);
       })
       .catch((err) => console.error(err.message));
