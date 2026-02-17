@@ -9,7 +9,6 @@ export function useForm(defaultValues) {
   }
 
   function handleReset() {
-    console.log(defaultValues);
     setValues(defaultValues);
   }
 
