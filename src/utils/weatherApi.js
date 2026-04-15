@@ -7,7 +7,6 @@ function fetchData() {
     if (res.ok) {
       return res.json();
     } else {
-      console.error("Server returned: ", res.status);
       throw new Error(`Server returned ${res.status}`);
     }
   });
