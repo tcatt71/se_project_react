@@ -101,7 +101,7 @@ function App() {
       .catch((err) => console.error(err.message));
   }
 
-  const condition = weatherApi.getWeatherCondition(weatherData.temperature);
+  const condition = weatherApi.getWeatherCondition(weatherData.temperature.F);
 
   return (
     <div className="app">
