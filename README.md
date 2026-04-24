@@ -12,3 +12,8 @@ WTWR connects to the OpenWeather API to retrieve the temperature and then displa
 - JavaScript
 - React
 - And a flat BEM file structure
+
+## Project Pitch Video
+
+Check out [this video](https://drive.google.com/file/d/11hltRzTd9JMlolerrHIrh9peIrJbMxuh/view?usp=drive_link), where I describe my
+project and some challenges I faced while building it.
