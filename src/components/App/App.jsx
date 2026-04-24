@@ -73,14 +73,13 @@ function App() {
     setActiveModal("");
   }
 
-  function handleAddItemSubmit(newClothing, resetForm) {
+  function handleAddItemSubmit(newClothing) {
     addItem(newClothing)
       .then((item) => {
         setClothingItems([item, ...clothingItems]);
       })
       .catch((err) => console.error(err.message));
     handleCloseModal();
-    resetForm();
   }
 
   function handleToggleSwitchChange() {
