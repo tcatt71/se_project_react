@@ -34,8 +34,8 @@ function Header({ location, onAddItem }) {
         </button>
         <Link to="/profile" className="header__link-wrapper">
           <span className="header__user-name">Terrence Tegegne</span>
+          <img src={avatar} alt="User" />
         </Link>
-        <img src={avatar} alt="User" />
       </div>
     </header>
   );
