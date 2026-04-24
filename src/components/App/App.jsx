@@ -77,9 +77,9 @@ function App() {
     addItem(newClothing)
       .then((item) => {
         setClothingItems([item, ...clothingItems]);
+        handleCloseModal();
       })
       .catch((err) => console.error(err.message));
-    handleCloseModal();
   }
 
   function handleToggleSwitchChange() {
