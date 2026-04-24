@@ -25,6 +25,9 @@
 .item-modal__image {
   width: 498px;
   height: 498px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .item-modal__title {
