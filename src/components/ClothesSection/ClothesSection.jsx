@@ -5,7 +5,7 @@ import "./../../layout/card-container.css";
 
 function ClothesSection({ clothingItems, onCardClick, onAddItem }) {
   return (
-    <div>
+    <section>
       <header className="clothes-section__header">
         <h2 className="clothes-section__title">Your items</h2>
         <button
@@ -29,7 +29,7 @@ function ClothesSection({ clothingItems, onCardClick, onAddItem }) {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
 export default ClothesSection;
