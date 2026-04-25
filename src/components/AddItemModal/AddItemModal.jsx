@@ -14,7 +14,7 @@ function AddItemModal({ isOpen, onAddItem, onClose }) {
 
   useEffect(() => {
     if (isOpen) handleReset();
-  }, [isOpen, handleReset]);
+  }, [isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
