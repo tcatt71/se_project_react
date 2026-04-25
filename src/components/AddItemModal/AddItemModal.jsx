@@ -5,7 +5,7 @@ import { useForm } from "../../hooks/useForm";
 import "./../Form/Form.css";
 import { useEffect } from "react";
 
-function AddItemModal({ isOpen, onAddItem, onClose }) {
+function AddItemModal({ isOpen, onAddItem, onClose, isLoading }) {
   const { values, handleChange, handleReset } = useForm({
     name: "",
     imageUrl: "",
@@ -27,7 +27,7 @@ function AddItemModal({ isOpen, onAddItem, onClose }) {
       onClose={onClose}
       onSubmit={handleSubmit}
       title={"New garment"}
-      buttonText={"Add garment"}
+      buttonText={isLoading ? "Saving..." : "Add garment"}
       name={"add-garment"}
     >
       <label className="form__label form__label_block" htmlFor="name">

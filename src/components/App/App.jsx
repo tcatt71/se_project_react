@@ -26,6 +26,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     getItems()
@@ -74,12 +75,14 @@ function App() {
   }
 
   function handleAddItemSubmit(newClothing) {
+    setIsLoading(true);
     addItem(newClothing)
       .then((item) => {
         setClothingItems([item, ...clothingItems]);
         handleCloseModal();
       })
-      .catch((err) => console.error(err.message));
+      .catch((err) => console.error(err.message))
+      .finally(() => setIsLoading(false));
   }
 
   function handleToggleSwitchChange() {
@@ -89,6 +92,7 @@ function App() {
   }
 
   function handleDeleteItem(id) {
+    setIsLoading(true);
     deleteItem(id)
       .then(() => {
         const newClothingItems = clothingItems.filter(
@@ -97,7 +101,8 @@ function App() {
         setClothingItems(newClothingItems);
         handleCloseModal();
       })
-      .catch((err) => console.error(err.message));
+      .catch((err) => console.error(err.message))
+      .finally(() => setIsLoading(false));
   }
 
   const condition = weatherApi.getWeatherCondition(weatherData.temperature.F);
@@ -139,11 +144,13 @@ function App() {
           onClose={handleCloseModal}
           selectedCard={selectedCard}
           onDeleteItem={handleDeleteItem}
+          isLoading={isLoading}
         ></ItemModal>
         <AddItemModal
           isOpen={activeModal === "add-garment"}
           onClose={handleCloseModal}
           onAddItem={handleAddItemSubmit}
+          isLoading={isLoading}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>
