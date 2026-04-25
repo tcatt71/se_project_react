@@ -1,21 +1,25 @@
 const baseUrl = "http://localhost:3001";
 
 function getItems() {
-  return fetch(`${baseUrl}/items`).then(processResponse);
+  return request(`${baseUrl}/items`);
 }
 
 function deleteItem(id) {
-  return fetch(`${baseUrl}/items/${id}`, {
+  return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
-  }).then(processResponse);
+  });
 }
 
 function addItem(item) {
-  return fetch(`${baseUrl}/items`, {
+  return request(`${baseUrl}/items`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(item),
-  }).then(processResponse);
+  });
+}
+
+function request(url, options) {
+  return fetch(url, options).then(processResponse);
 }
 
 function processResponse(res) {
@@ -25,4 +29,4 @@ function processResponse(res) {
   return res.json();
 }
 
-export { getItems, deleteItem, addItem, processResponse };
+export { getItems, deleteItem, addItem, request };

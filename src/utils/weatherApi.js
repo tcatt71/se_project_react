@@ -1,10 +1,10 @@
 import * as constants from "./constants.js";
-import { processResponse } from "./api.js";
+import { request } from "./api.js";
 
 function fetchData() {
-  return fetch(
+  return request(
     `https://api.openweathermap.org/data/2.5/weather?lat=${constants.LATITUDE}&lon=${constants.LONGITUDE}&units=imperial&appid=${constants.API_KEY}`,
-  ).then(processResponse);
+  );
 }
 
 function getWeatherCondition(temp) {
