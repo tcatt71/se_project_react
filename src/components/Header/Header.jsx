@@ -12,7 +12,7 @@ const currentDate = new Date().toLocaleString("default", {
   day: "numeric",
 });
 
-function Header({ location, onAddItem }) {
+function Header({ location, onAddItem, geolocationError }) {
   return (
     <header className="header app__header">
       <div className="header__container">
@@ -23,6 +23,9 @@ function Header({ location, onAddItem }) {
         <span className="header__date-location">
           {currentDate}, {location}
         </span>
+        {geolocationError && (
+          <span className="header__error">{geolocationError}</span>
+        )}
       </div>
       <div className="header__container">
         <ToggleSwitch />

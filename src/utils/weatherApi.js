@@ -1,9 +1,12 @@
 import * as constants from "./constants.js";
 import { request } from "./api.js";
 
-function fetchData() {
+function fetchData(
+  latitude = constants.LATITUDE,
+  longitude = constants.LONGITUDE,
+) {
   return request(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${constants.LATITUDE}&lon=${constants.LONGITUDE}&units=imperial&appid=${constants.API_KEY}`,
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${constants.API_KEY}`,
   );
 }
 
