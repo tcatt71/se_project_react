@@ -40,6 +40,27 @@
   margin: 0 0 24px;
 }
 
+.form__input_invalid {
+  border-bottom: 2px solid #ff0000;
+}
+
+.form__error {
+  display: block;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  margin-top: -20px;
+  margin-bottom: 24px;
+}
+
+.form__error_visible {
+  visibility: visible;
+}
+
+.form__error_hidden {
+  visibility: hidden;
+}
+
 .form__field:not(:last-child) {
   margin-bottom: 8px;
 }
@@ -61,4 +82,13 @@
 
 .form__radio-button:checked + .form__label {
   color: #000;
+}
+
+.form__error {
+  display: block;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  margin-top: -20px;
+  margin-bottom: 24px;
 }
