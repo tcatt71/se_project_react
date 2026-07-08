@@ -13,7 +13,14 @@ WTWR connects to the OpenWeather API to retrieve the temperature and then displa
 - React
 - And a flat BEM file structure
 
+## API Key Setup
+
+1. Copy `.env.example` to a new `.env` file.
+2. Get your own OpenWeather API key at https://openweathermap.org/api.
+3. Open `.env` and set the key value, for example:
+
+   `VITE_API_KEY=your_api_key_here`
+
 ## Project Pitch Video
 
-Check out [this video](https://drive.google.com/file/d/11hltRzTd9JMlolerrHIrh9peIrJbMxuh/view?usp=drive_link), where I describe my
-project and some challenges I faced while building it.
+Check out [this video](https://drive.google.com/file/d/11hltRzTd9JMlolerrHIrh9peIrJbMxuh/view?usp=drive_link), where I describe my project and some challenges I faced while building it.
