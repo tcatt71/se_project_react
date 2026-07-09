@@ -21,6 +21,10 @@ WTWR connects to the OpenWeather API to retrieve the temperature and then displa
 
    `VITE_API_KEY=your_api_key_here`
 
+## Project Backend Link
+
+The WTWR app's backend is found [here](https://github.com/tcatt71/se_project_express).
+
 ## Project Pitch Video
 
 Check out [this video](https://drive.google.com/file/d/11hltRzTd9JMlolerrHIrh9peIrJbMxuh/view?usp=drive_link), where I describe my project and some challenges I faced while building it.
