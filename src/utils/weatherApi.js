@@ -8,13 +8,9 @@ function fetchData() {
 }
 
 function getWeatherCondition(temp) {
-  if (temp >= 86) {
-    return "hot";
-  } else if (temp < 86 && temp >= 66) {
-    return "warm";
-  } else {
-    return "cold";
-  }
+  if (temp >= 86) return "hot";
+  if (temp >= 66) return "warm";
+  return "cold";
 }
 
 export { fetchData, getWeatherCondition };
