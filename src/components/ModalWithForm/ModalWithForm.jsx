@@ -9,6 +9,7 @@ function ModalWithForm({
   buttonText,
   children,
   onSubmit,
+  isValid = true,
 }) {
   return (
     <div
@@ -28,7 +29,11 @@ function ModalWithForm({
           &#10005;
         </button>
         {children}
-        <button className="button button_type_submit" type="submit">
+        <button
+          className="button button_type_submit"
+          type="submit"
+          disabled={!isValid}
+        >
           {buttonText}
         </button>
       </form>
