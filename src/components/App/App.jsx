@@ -11,7 +11,12 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 
 import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
 
-import * as weatherApi from "../../utils/weatherApi";
+import {
+  fetchData,
+  cleanWeatherData,
+  getWeatherCondition,
+} from "../../utils/weatherApi";
+import { getGeolocation } from "../../utils/geolocation";
 import { getItems, addItem, deleteItem } from "../../utils/api";
 
 import "./App.css";
@@ -27,24 +32,35 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isLoading, setIsLoading] = useState(false);
+  const [geolocationError, setGeolocationError] = useState(null);
 
   useEffect(() => {
     getItems()
       .then((data) => setClothingItems(data))
       .catch((err) => console.error(err.message));
 
-    weatherApi
-      .fetchData()
-      .then((data) => {
-        setWeatherData({
-          location: data.name,
-          temperature: {
-            F: data.main.temp,
-            C: Math.round(((data.main.temp - 32) * 5) / 9),
-          },
-        });
+    // Get user's geolocation and fetch weather data
+    getGeolocation()
+      .then(({ latitude, longitude }) => {
+        return fetchData(latitude, longitude);
       })
-      .catch((err) => console.error(err));
+      .then((data) => {
+        setWeatherData(cleanWeatherData(data));
+      })
+      .catch((err) => {
+        console.error(err.message);
+        setGeolocationError(err.message);
+        // Fallback to default coordinates
+        fetchData()
+          .then((fallbackData) => {
+            if (fallbackData) {
+              setWeatherData(cleanWeatherData(fallbackData));
+            }
+          })
+          .catch((err) => {
+            console.error(err.message);
+          });
+      });
   }, []);
 
   useEffect(() => {
@@ -105,7 +121,7 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
-  const condition = weatherApi.getWeatherCondition(weatherData.temperature.F);
+  const condition = getWeatherCondition(weatherData.temperature.F);
 
   return (
     <div className="app">
@@ -113,7 +129,11 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <div className="app__container">
-          <Header location={weatherData.location} onAddItem={handleAddItem} />
+          <Header
+            location={weatherData.location}
+            onAddItem={handleAddItem}
+            geolocationError={geolocationError}
+          />
           <Routes>
             <Route
               path="/"

@@ -7,10 +7,20 @@ function fetchData() {
   );
 }
 
+function cleanWeatherData(data) {
+  return {
+    location: data.name,
+    temperature: {
+      F: data.main.temp,
+      C: Math.round(((data.main.temp - 32) * 5) / 9),
+    },
+  };
+}
+
 function getWeatherCondition(temp) {
   if (temp >= 86) return "hot";
   if (temp >= 66) return "warm";
   return "cold";
 }
 
-export { fetchData, getWeatherCondition };
+export { fetchData, cleanWeatherData, getWeatherCondition };
