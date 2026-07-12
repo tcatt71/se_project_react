@@ -41,30 +41,22 @@ function App() {
         return weatherApi.fetchData(latitude, longitude);
       })
       .then((data) => {
-        setWeatherData({
-          location: data.name,
-          temperature: {
-            F: data.main.temp,
-            C: Math.round(((data.main.temp - 32) * 5) / 9),
-          },
-        });
+        setWeatherData(weatherApi.cleanWeatherData(data));
       })
       .catch((err) => {
         console.error(err.message);
         setGeolocationError(err.message);
         // Fallback to default coordinates
-        return weatherApi.fetchData();
-      })
-      .then((data) => {
-        if (data) {
-          setWeatherData({
-            location: data.name,
-            temperature: {
-              F: data.main.temp,
-              C: Math.round(((data.main.temp - 32) * 5) / 9),
-            },
+        weatherApi
+          .fetchData()
+          .then((fallbackData) => {
+            if (fallbackData) {
+              setWeatherData(weatherApi.cleanWeatherData(fallbackData));
+            }
+          })
+          .catch((err) => {
+            console.error(err.message);
           });
-        }
       });
   }, []);
 
