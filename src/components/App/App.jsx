@@ -8,6 +8,7 @@ import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
 import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
 
@@ -65,6 +66,10 @@ function App() {
     setActiveModal("add-garment");
   }
 
+  function handleRegister() {
+    setActiveModal("register");
+  }
+
   function handleCardClick(cardData) {
     setActiveModal("item-card");
     setSelectedCard(cardData);
@@ -83,6 +88,18 @@ function App() {
       })
       .catch((err) => console.error(err.message))
       .finally(() => setIsLoading(false));
+  }
+
+  function handleRegisterSubmit(userData) {
+    setIsLoading(true);
+    console.log("Submitting registration:", userData);
+
+    // TODO: Add auth backend API call here
+
+    setTimeout(() => {
+      handleCloseModal();
+      setIsLoading(false);
+    }, 1000);
   }
 
   function handleToggleSwitchChange() {
@@ -113,7 +130,11 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <div className="app__container">
-          <Header location={weatherData.location} onAddItem={handleAddItem} />
+          <Header
+            location={weatherData.location}
+            onAddItem={handleAddItem}
+            onRegister={handleRegister}
+          />
           <Routes>
             <Route
               path="/"
@@ -152,6 +173,12 @@ function App() {
           onAddItem={handleAddItemSubmit}
           isLoading={isLoading}
         />
+        <RegisterModal
+          isOpen={activeModal === "register"}
+          onClose={handleCloseModal}
+          onRegisterSubmit={handleRegisterSubmit}
+          isLoading={isLoading}
+        ></RegisterModal>
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

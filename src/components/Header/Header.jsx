@@ -12,7 +12,7 @@ const currentDate = new Date().toLocaleString("default", {
   day: "numeric",
 });
 
-function Header({ location, onAddItem }) {
+function Header({ location, onAddItem, onRegister }) {
   return (
     <header className="header app__header">
       <div className="header__container">
@@ -26,6 +26,12 @@ function Header({ location, onAddItem }) {
       </div>
       <div className="header__container">
         <ToggleSwitch />
+        <button
+          className="button button_type_text header__button"
+          onClick={onRegister}
+        >
+          Sign Up
+        </button>
         <button
           className="button button_type_text header__button"
           onClick={onAddItem}
