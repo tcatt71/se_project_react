@@ -6,9 +6,11 @@ function ModalWithForm({
   onClose,
   title,
   name,
-  buttonText,
+  submitButtonText,
+  orButtonText,
   children,
   onSubmit,
+  showOrButton,
 }) {
   return (
     <div
@@ -28,9 +30,16 @@ function ModalWithForm({
           &#10005;
         </button>
         {children}
-        <button className="button button_type_submit" type="submit">
-          {buttonText}
-        </button>
+        <div>
+          <button className="button button_type_submit" type="submit">
+            {submitButtonText}
+          </button>
+          {showOrButton && (
+            <button className="button button_type_or" type="button">
+              {orButtonText}
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );
