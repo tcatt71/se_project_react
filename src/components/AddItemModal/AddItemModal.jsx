@@ -48,7 +48,7 @@ function AddItemModal({ isOpen, onAddItem, onClose, isLoading }) {
       onClose={onClose}
       onSubmit={handleSubmit}
       title={"New garment"}
-      buttonText={isLoading ? "Saving..." : "Add garment"}
+      submitButtonText={isLoading ? "Saving..." : "Add garment"}
       name={"add-garment"}
       isValid={isValid}
     >
