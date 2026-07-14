@@ -24,6 +24,30 @@ const validationRules = {
       required: "Please select a weather type",
     },
   },
+  email: {
+    required: true,
+    pattern: /^[\w.-]+@[\w.-]+\.[\w]+$/,
+    message: {
+      required: "This field is required",
+      pattern: "Please enter a valid email",
+    },
+  },
+  password: {
+    required: true,
+    pattern: /.{6,}/,
+    message: {
+      required: "This field is required",
+      pattern: "Password must be at least 6 characters long",
+    },
+  },
+  avatarUrl: {
+    required: true,
+    pattern: /^https?:\/\/.+/,
+    message: {
+      required: "This field is required",
+      pattern: "Please enter a valid URL",
+    },
+  },
 };
 
 // Validate a single field value against its rules
