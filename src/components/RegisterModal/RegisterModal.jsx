@@ -23,6 +23,13 @@ function RegisterModal({ isOpen, onRegisterSubmit, onClose, isLoading }) {
     }
   }, [isOpen, handleReset]);
 
+  useEffect(() => {
+    if (!isOpen) {
+      handleReset();
+      setTouched({});
+    }
+  }, [isOpen, handleReset]);
+
   function handleSubmit(e) {
     e.preventDefault();
     if (isValid) {
