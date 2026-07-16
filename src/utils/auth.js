@@ -9,4 +9,12 @@ function register({ name, avatar, email, password }) {
   });
 }
 
-export { register };
+function authorize({ email, password }) {
+  return request(`${BASE_URL}/signin`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+}
+
+export { register, authorize };
