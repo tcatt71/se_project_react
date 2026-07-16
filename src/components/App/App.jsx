@@ -9,6 +9,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
 
 import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
 
@@ -119,6 +120,8 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
+  function handleLoginSubmit() {}
+
   function handleToggleSwitchChange() {
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
@@ -197,6 +200,12 @@ function App() {
           onRegisterSubmit={handleRegisterSubmit}
           isLoading={isLoading}
         ></RegisterModal>
+        <LoginModal
+          isOpen={activeModal === "login"}
+          onClose={handleCloseModal}
+          onLoginSubmit={handleLoginSubmit}
+          isLoading={isLoading}
+        ></LoginModal>
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

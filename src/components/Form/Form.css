@@ -17,6 +17,10 @@
   right: 28px;
 }
 
+.form__input-container {
+  margin-bottom: 32px;
+}
+
 .form__label {
   font-size: 16px;
   line-height: 20px;
@@ -91,4 +95,8 @@
   color: #ff0000;
   margin-top: -20px;
   margin-bottom: 24px;
+}
+
+.form__error:last-of-type {
+  margin-bottom: 20px;
 }
