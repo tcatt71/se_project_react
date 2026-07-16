@@ -19,6 +19,7 @@ import {
 } from "../../utils/weatherApi";
 import { getGeolocation } from "../../utils/geolocation";
 import { getItems, addItem, deleteItem } from "../../utils/api";
+import { register } from "../../utils/auth";
 
 import "./App.css";
 import "./../Button/Button.css";
@@ -108,14 +109,14 @@ function App() {
 
   function handleRegisterSubmit(userData) {
     setIsLoading(true);
-    console.log("Submitting registration:", userData);
-
-    // TODO: Add auth backend API call here
-
-    setTimeout(() => {
-      handleCloseModal();
-      setIsLoading(false);
-    }, 1000);
+    register(userData)
+      .then(() => {
+        handleCloseModal();
+        // TODO: Once login helper is built, auto-login the user here:
+        // handleLoginSubmit({ email: userData.email, password: userData.password });
+      })
+      .catch((err) => console.error(err.message))
+      .finally(() => setIsLoading(false));
   }
 
   function handleToggleSwitchChange() {

@@ -33,7 +33,8 @@ function RegisterModal({ isOpen, onRegisterSubmit, onClose, isLoading }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (isValid) {
-      onRegisterSubmit(values);
+      const { name, email, password, avatarUrl } = values;
+      onRegisterSubmit({ name, email, password, avatar: avatarUrl });
       handleReset();
     }
   }
