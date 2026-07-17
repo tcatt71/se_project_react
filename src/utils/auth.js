@@ -17,4 +17,14 @@ function authorize({ email, password }) {
   });
 }
 
-export { register, authorize };
+function checkToken(token) {
+  return request(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+export { register, authorize, checkToken };
