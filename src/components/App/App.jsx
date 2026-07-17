@@ -20,7 +20,7 @@ import {
 } from "../../utils/weatherApi";
 import { getGeolocation } from "../../utils/geolocation";
 import { getItems, addItem, deleteItem } from "../../utils/api";
-import { register } from "../../utils/auth";
+import { register, authorize } from "../../utils/auth";
 
 import "./App.css";
 import "./../Button/Button.css";
@@ -36,6 +36,12 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isLoading, setIsLoading] = useState(false);
   const [geolocationError, setGeolocationError] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({
+    name: "",
+    avatar: "",
+    email: "",
+  });
 
   useEffect(() => {
     getItems()
@@ -120,7 +126,25 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
-  function handleLoginSubmit() {}
+  function handleLoginSubmit({ email, password }) {
+    if (!email || !password) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    authorize({ email, password })
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("jwt", res.token);
+          setCurrentUser(res.user);
+          setIsLoggedIn(true);
+          handleCloseModal();
+        }
+      })
+      .catch((err) => console.error("Login failed:", err))
+      .finally(() => setIsLoading(false));
+  }
 
   function handleToggleSwitchChange() {
     currentTemperatureUnit === "F"
