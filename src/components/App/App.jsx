@@ -114,16 +114,13 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
-  function handleRegisterSubmit(userData) {
+  function handleRegisterSubmit({ name, avatar, email, password }) {
     setIsLoading(true);
-    register(userData)
+    register({ name, avatar, email, password })
       .then(() => {
-        handleCloseModal();
-        // TODO: Once login helper is built, auto-login the user here:
-        // handleLoginSubmit({ email: userData.email, password: userData.password });
+        handleLoginSubmit({ email, password });
       })
-      .catch((err) => console.error(err.message))
-      .finally(() => setIsLoading(false));
+      .catch((err) => console.error(err.message));
   }
 
   function handleLoginSubmit({ email, password }) {
