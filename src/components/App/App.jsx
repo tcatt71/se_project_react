@@ -90,10 +90,6 @@ function App() {
     setActiveModal("add-garment");
   }
 
-  function handleRegister() {
-    setActiveModal("register");
-  }
-
   function handleCardClick(cardData) {
     setActiveModal("item-card");
     setSelectedCard(cardData);
@@ -175,7 +171,6 @@ function App() {
             location={weatherData.location}
             onAddItem={handleAddItem}
             geolocationError={geolocationError}
-            onRegister={handleRegister}
           />
           <Routes>
             <Route
