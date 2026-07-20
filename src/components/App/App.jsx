@@ -10,6 +10,7 @@ import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
 
@@ -187,11 +188,13 @@ function App() {
             <Route
               path="/profile"
               element={
-                <Profile
-                  clothingItems={clothingItems}
-                  onCardClick={handleCardClick}
-                  onAddItem={handleAddItem}
-                />
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    clothingItems={clothingItems}
+                    onCardClick={handleCardClick}
+                    onAddItem={handleAddItem}
+                  />
+                </ProtectedRoute>
               }
             />
           </Routes>
