@@ -21,7 +21,7 @@ import {
 } from "../../utils/weatherApi";
 import { getGeolocation } from "../../utils/geolocation";
 import { getItems, addItem, deleteItem } from "../../utils/api";
-import { register, authorize } from "../../utils/auth";
+import { register, authorize, checkToken } from "../../utils/auth";
 
 import "./App.css";
 import "./../Button/Button.css";
@@ -42,6 +42,7 @@ function App() {
     name: "",
     avatar: "",
     email: "",
+    _id: "",
   });
 
   useEffect(() => {
@@ -72,6 +73,24 @@ function App() {
           .catch((err) => {
             console.error(err.message);
           });
+      });
+  }, []);
+
+  useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+
+    if (!jwt) {
+      return;
+    }
+
+    checkToken(jwt)
+      .then(({ name, avatar, email, _id }) => {
+        setIsLoggedIn(true);
+        setCurrentUser({ name, avatar, email, _id });
+      })
+      .catch((err) => {
+        console.error(err.message);
+        localStorage.removeItem("jwt");
       });
   }, []);
 
