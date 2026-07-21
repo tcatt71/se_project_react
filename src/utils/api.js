@@ -4,16 +4,22 @@ function getItems() {
   return request(`${BASE_URL}/items`);
 }
 
-function deleteItem(id) {
+function deleteItem(id, token) {
   return request(`${BASE_URL}/items/${id}`, {
     method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
 }
 
-function addItem(item) {
+function addItem(item, token) {
   return request(`${BASE_URL}/items`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
     body: JSON.stringify(item),
   });
 }

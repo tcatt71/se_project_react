@@ -123,7 +123,9 @@ function App() {
 
   function handleAddItemSubmit(newClothing) {
     setIsLoading(true);
-    addItem(newClothing)
+    const jwt = localStorage.getItem("jwt");
+
+    addItem(newClothing, jwt)
       .then((item) => {
         setClothingItems([item, ...clothingItems]);
         handleCloseModal();
@@ -169,7 +171,9 @@ function App() {
 
   function handleDeleteItem(id) {
     setIsLoading(true);
-    deleteItem(id)
+    const jwt = localStorage.getItem("jwt");
+
+    deleteItem(id, jwt)
       .then(() => {
         const newClothingItems = clothingItems.filter(
           (item) => item._id !== id,
