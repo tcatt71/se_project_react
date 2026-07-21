@@ -48,7 +48,9 @@ function App() {
     getItems()
       .then((data) => setClothingItems(data))
       .catch((err) => console.error(err.message));
+  }, []);
 
+  useEffect(() => {
     // Get user's geolocation and fetch weather data
     getGeolocation()
       .then(({ latitude, longitude }) => {
