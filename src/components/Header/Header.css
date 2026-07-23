@@ -51,3 +51,20 @@
   line-height: 1;
   margin-right: 12px;
 }
+
+.header__avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #00000080;
+}
+
+.header__avatar {
+  width: 100%;
+  border-radius: 50%;
+}

@@ -23,7 +23,9 @@ function Header({
   onRegister,
   onLogin,
 }) {
-  const { name, avatar } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
+
+  const userInitial = currentUser.name.trim().charAt(0);
 
   return (
     <header className="header app__header">
@@ -67,7 +69,19 @@ function Header({
             </button>
             <Link to="/profile" className="header__link-wrapper">
               <span className="header__user-name">{name}</span>
-              <img src={avatar} alt="User" />
+              {currentUser.avatar ? (
+                <div className="header__avatar-container">
+                  <img
+                    className="header__avatar"
+                    src={currentUser.avatar}
+                    alt="user avatar"
+                  />
+                </div>
+              ) : (
+                <div className="header__avatar-container">
+                  {userInitial.toUpperCase()}
+                </div>
+              )}
             </Link>
           </>
         )}
