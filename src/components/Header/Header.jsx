@@ -1,9 +1,12 @@
+import { useContext } from "react";
+
 import { Link } from "react-router-dom";
 
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+
 import logo from "./../../assets/logo.svg";
-import avatar from "./../../assets/avatar.png";
 
 import "./Header.css";
 
@@ -12,7 +15,16 @@ const currentDate = new Date().toLocaleString("default", {
   day: "numeric",
 });
 
-function Header({ location, onAddItem, geolocationError }) {
+function Header({
+  location,
+  onAddItem,
+  geolocationError,
+  isLoggedIn,
+  onRegister,
+  onLogin,
+}) {
+  const { name, avatar } = useContext(CurrentUserContext);
+
   return (
     <header className="header app__header">
       <div className="header__container">
@@ -29,16 +41,36 @@ function Header({ location, onAddItem, geolocationError }) {
       </div>
       <div className="header__container">
         <ToggleSwitch />
-        <button
-          className="button button_type_text header__button"
-          onClick={onAddItem}
-        >
-          + Add clothes
-        </button>
-        <Link to="/profile" className="header__link-wrapper">
-          <span className="header__user-name">Terrence Tegegne</span>
-          <img src={avatar} alt="User" />
-        </Link>
+        {!isLoggedIn && (
+          <>
+            <button
+              className="button button_type_text header__button"
+              onClick={onRegister}
+            >
+              Sign Up
+            </button>
+            <button
+              className="button button_type_text header__button"
+              onClick={onLogin}
+            >
+              Log In
+            </button>
+          </>
+        )}
+        {isLoggedIn && (
+          <>
+            <button
+              className="button button_type_text header__button"
+              onClick={onAddItem}
+            >
+              + Add clothes
+            </button>
+            <Link to="/profile" className="header__link-wrapper">
+              <span className="header__user-name">{name}</span>
+              <img src={avatar} alt="User" />
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );

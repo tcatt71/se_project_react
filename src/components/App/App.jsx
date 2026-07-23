@@ -135,6 +135,10 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
+  function handleRegister() {
+    setActiveModal("register");
+  }
+
   function handleRegisterSubmit({ name, avatar, email, password }) {
     setIsLoading(true);
     register({ name, avatar, email, password })
@@ -142,6 +146,10 @@ function App() {
         handleLoginSubmit({ email, password });
       })
       .catch((err) => console.error(err.message));
+  }
+
+  function handleLogin() {
+    setActiveModal("login");
   }
 
   function handleLoginSubmit({ email, password }) {
@@ -189,7 +197,7 @@ function App() {
   const condition = getWeatherCondition(weatherData.temperature.F);
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={{ currentUser }}>
       <div className="app">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -199,6 +207,9 @@ function App() {
               location={weatherData.location}
               onAddItem={handleAddItem}
               geolocationError={geolocationError}
+              isLoggedIn={isLoggedIn}
+              onRegister={handleRegister}
+              onLogin={handleLogin}
             />
             <Routes>
               <Route
