@@ -25,7 +25,7 @@ function Header({
 }) {
   const { currentUser } = useContext(CurrentUserContext);
 
-  const userInitial = currentUser.name.trim().charAt(0);
+  const userInitial = currentUser?.name.trim().charAt(0);
 
   return (
     <header className="header app__header">
