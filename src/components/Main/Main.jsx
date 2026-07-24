@@ -27,6 +27,7 @@ function Main({ temperature, clothingItems, condition, onCardClick }) {
             .map((item) => (
               <li className="main__list-item" key={item._id}>
                 <ItemCard
+                  owner={item.owner}
                   itemId={item._id}
                   name={item.name}
                   link={item.imageUrl}
