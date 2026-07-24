@@ -1,7 +1,11 @@
 import { BASE_URL } from "./constants";
 
-function getItems() {
-  return request(`${BASE_URL}/items`);
+function getItems(token) {
+  return request(`${BASE_URL}/items`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 }
 
 function deleteItem(id, token) {

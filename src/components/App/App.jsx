@@ -47,7 +47,13 @@ function App() {
   });
 
   useEffect(() => {
-    getItems()
+    const jwt = localStorage.getItem("jwt");
+
+    if (!jwt) {
+      return;
+    }
+
+    getItems(jwt)
       .then((data) => setClothingItems(data))
       .catch((err) => console.error(err.message));
   }, []);
