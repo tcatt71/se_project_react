@@ -169,13 +169,27 @@ function App() {
       .then((res) => {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
-          setCurrentUser(res.user);
+
+          return getItems(res.token)
+            .then((data) => {
+              setClothingItems(data);
           setIsLoggedIn(true);
-          handleCloseModal();
+            })
+            .then(() => checkToken(res.token))
+            .then(({ name, avatar, email, _id }) =>
+              setCurrentUser({ name, avatar, email, _id }),
+            )
+            .catch((err) => {
+              console.error(err.message);
+              localStorage.removeItem("jwt");
+            });
         }
       })
       .catch((err) => console.error("Login failed:", err))
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        setIsLoading(false);
+        handleCloseModal();
+      });
   }
 
   function handleToggleSwitchChange() {
