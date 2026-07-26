@@ -7,7 +7,7 @@ function ItemModal({ isOpen, onClose, selectedCard, onDeleteItem, isLoading }) {
     backgroundImage: `url(${selectedCard.link})`,
   };
   const { currentUser } = useContext(CurrentUserContext);
-  const isOwn = selectedCard.owner === currentUser._id;
+  const isOwn = selectedCard.owner === currentUser?._id;
 
   return (
     <div className={`modal ${isOpen ? "modal_isOpened" : ""}`}>
