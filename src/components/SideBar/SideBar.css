@@ -5,12 +5,14 @@
 .side-bar__container {
   display: flex;
   align-items: center;
+  gap: 16px;
 }
 
 .side-bar__avatar {
   width: 56px;
   height: 56px;
-  padding-right: 16px;
+  border: 1px solid #00000080;
+  border-radius: 50%;
 }
 
 .side-bar__user-name {
