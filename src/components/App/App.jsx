@@ -177,7 +177,7 @@ function App() {
           return getItems(res.token)
             .then((data) => {
               setClothingItems(data);
-          setIsLoggedIn(true);
+              setIsLoggedIn(true);
             })
             .then(() => checkToken(res.token))
             .then(({ name, avatar, email, _id }) =>
