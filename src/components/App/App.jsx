@@ -151,7 +151,11 @@ function App() {
       .then(() => {
         handleLoginSubmit({ email, password });
       })
-      .catch((err) => console.error(err.message));
+      .catch((err) => {
+        console.error(err.message);
+        setIsLoading(false);
+        handleCloseModal();
+      });
   }
 
   function handleLogin() {
