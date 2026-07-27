@@ -10,6 +10,7 @@ import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import { CurrentTemperatureUnitContext } from "./../../contexts/CurrentTemperatureUnitContext";
@@ -196,6 +197,10 @@ function App() {
       });
   }
 
+  function handleEditProfile() {
+    setActiveModal("edit-profile");
+  }
+
   function handleToggleSwitchChange() {
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
@@ -255,6 +260,7 @@ function App() {
                       clothingItems={clothingItems}
                       onCardClick={handleCardClick}
                       onAddItem={handleAddItem}
+                      onEditProfile={handleEditProfile}
                     />
                   </ProtectedRoute>
                 }
@@ -287,6 +293,11 @@ function App() {
             onLoginSubmit={handleLoginSubmit}
             isLoading={isLoading}
           ></LoginModal>
+          <EditProfileModal
+            isOpen={activeModal === "edit-profile"}
+            onClose={handleCloseModal}
+            isLoading={isLoading}
+          ></EditProfileModal>
         </CurrentTemperatureUnitContext.Provider>
       </div>
     </CurrentUserContext.Provider>

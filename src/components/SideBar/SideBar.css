@@ -1,5 +1,8 @@
 .side-bar {
+  display: flex;
   flex: 0 0 345px;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .side-bar__container {

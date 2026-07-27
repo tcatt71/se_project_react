@@ -143,7 +143,7 @@ export function useFormWithValidation(defaultValues = {}) {
     setValues(defaultValues);
     setErrors({});
     setIsValid(false);
-  }, []);
+  }, [defaultValues.name, defaultValues.avatarUrl]);
 
   return {
     values,

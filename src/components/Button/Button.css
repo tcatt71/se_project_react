@@ -10,6 +10,10 @@
   margin-right: 20px;
 }
 
+.button_type_profile {
+  line-height: 1;
+}
+
 .button_type_close {
   position: absolute;
   font-size: 20px;
