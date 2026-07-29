@@ -226,7 +226,7 @@ function App() {
   const condition = getWeatherCondition(weatherData.temperature.F);
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser }}>
+    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="app">
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -297,6 +297,7 @@ function App() {
             isOpen={activeModal === "edit-profile"}
             onClose={handleCloseModal}
             isLoading={isLoading}
+            setIsLoading={setIsLoading}
           ></EditProfileModal>
         </CurrentTemperatureUnitContext.Provider>
       </div>

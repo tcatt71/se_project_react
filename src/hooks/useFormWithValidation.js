@@ -48,6 +48,22 @@ const validationRules = {
       pattern: "Please enter a valid URL",
     },
   },
+  avatarUrlUpdate: {
+    required: false,
+    pattern: /^https?:\/\/.+/,
+    message: {
+      // required: "This field is required",
+      pattern: "Please enter a valid URL",
+    },
+  },
+  nameUpdate: {
+    required: false,
+    minLength: 2,
+    message: {
+      // required: "This field is required",
+      minLength: "Name must be at least 2 characters",
+    },
+  },
 };
 
 // Validate a single field value against its rules
@@ -143,7 +159,7 @@ export function useFormWithValidation(defaultValues = {}) {
     setValues(defaultValues);
     setErrors({});
     setIsValid(false);
-  }, [defaultValues.name, defaultValues.avatarUrl]);
+  }, [defaultValues.nameUpdate, defaultValues.avatarUrlUpdate]);
 
   return {
     values,

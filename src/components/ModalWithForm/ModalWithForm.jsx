@@ -10,8 +10,9 @@ function ModalWithForm({
   orButtonText,
   children,
   onSubmit,
-  isValid = true,
+  isValid,
   showOrButton,
+  profileUpdateError,
 }) {
   return (
     <div
@@ -23,6 +24,9 @@ function ModalWithForm({
         onSubmit={(e) => onSubmit(e)}
       >
         <h2 className="form__title">{title}</h2>
+        {profileUpdateError && (
+          <span className="modal__error">{profileUpdateError}</span>
+        )}
         <button
           className="button button_type_close button_color_gray form__button_type_close"
           type="button"

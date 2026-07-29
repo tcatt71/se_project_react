@@ -18,3 +18,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.modal__error {
+  color: #ff0000;
+  font-size: 18px;
+  margin-left: 10px;
+}

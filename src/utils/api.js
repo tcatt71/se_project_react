@@ -28,6 +28,17 @@ function addItem(item, token) {
   });
 }
 
+function updateProfile(data, token) {
+  return request(`${BASE_URL}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+}
+
 function request(url, options) {
   return fetch(url, options).then(processResponse);
 }
@@ -39,4 +50,4 @@ function processResponse(res) {
   return res.json();
 }
 
-export { getItems, deleteItem, addItem, request };
+export { getItems, deleteItem, addItem, request, updateProfile };
