@@ -39,6 +39,20 @@ function updateProfile(data, token) {
   });
 }
 
+function addCardLike(id, token) {
+  return request(`${BASE_URL}/items/${id}/likes`, {
+    method: "PUT",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+}
+
+function removeCardLike(id, token) {
+  return request(`${BASE_URL}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+}
+
 function request(url, options) {
   return fetch(url, options).then(processResponse);
 }
@@ -50,4 +64,12 @@ function processResponse(res) {
   return res.json();
 }
 
-export { getItems, deleteItem, addItem, request, updateProfile };
+export {
+  getItems,
+  deleteItem,
+  addItem,
+  request,
+  updateProfile,
+  addCardLike,
+  removeCardLike,
+};

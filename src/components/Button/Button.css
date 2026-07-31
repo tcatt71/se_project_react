@@ -45,6 +45,19 @@
   border-radius: 4px;
 }
 
+.button_type_like {
+  width: 18px;
+  height: 15px;
+}
+
+.button_liked {
+  background-image: url("../../assets/liked.svg");
+}
+
+.button_disliked {
+  background-image: url("../../assets/disliked.svg");
+}
+
 .button_color_white {
   color: #fff;
 }

@@ -22,7 +22,13 @@ import {
   getWeatherCondition,
 } from "../../utils/weatherApi";
 import { getGeolocation } from "../../utils/geolocation";
-import { getItems, addItem, deleteItem } from "../../utils/api";
+import {
+  getItems,
+  addItem,
+  deleteItem,
+  addCardLike,
+  removeCardLike,
+} from "../../utils/api";
 import { register, authorize, checkToken } from "../../utils/auth";
 
 import "./App.css";
@@ -223,6 +229,26 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
+  function updateClothingItems(card) {
+    setClothingItems(
+      clothingItems.map((item) => (card._id === item._id ? card : item)),
+    );
+  }
+
+  function handleCardLike(itemId, isLiked) {
+    const jwt = localStorage.getItem("jwt");
+
+    if (!isLiked) {
+      addCardLike(itemId, jwt)
+        .then(updateClothingItems)
+        .catch((err) => console.error(err.message));
+    } else {
+      removeCardLike(itemId, jwt)
+        .then(updateClothingItems)
+        .catch((err) => console.error(err.message));
+    }
+  }
+
   const condition = getWeatherCondition(weatherData.temperature.F);
 
   return (
@@ -249,6 +275,8 @@ function App() {
                     clothingItems={clothingItems}
                     condition={condition}
                     onCardClick={handleCardClick}
+                    onCardLike={handleCardLike}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               />
@@ -261,6 +289,8 @@ function App() {
                       onCardClick={handleCardClick}
                       onAddItem={handleAddItem}
                       onEditProfile={handleEditProfile}
+                      onCardLike={handleCardLike}
+                      isLoggedIn={isLoggedIn}
                     />
                   </ProtectedRoute>
                 }
