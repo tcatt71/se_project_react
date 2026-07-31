@@ -5,7 +5,7 @@
   gap: 24px;
 }
 
-.side-bar__container {
+.side-bar__header {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -20,4 +20,11 @@
 
 .side-bar__user-name {
   line-height: 1;
+}
+
+.side-bar__buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }

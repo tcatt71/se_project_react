@@ -249,6 +249,12 @@ function App() {
     }
   }
 
+  function handleLogout() {
+    console.log("logout");
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+  }
+
   const condition = getWeatherCondition(weatherData.temperature.F);
 
   return (
@@ -291,6 +297,7 @@ function App() {
                       onEditProfile={handleEditProfile}
                       onCardLike={handleCardLike}
                       isLoggedIn={isLoggedIn}
+                      onLogout={handleLogout}
                     />
                   </ProtectedRoute>
                 }

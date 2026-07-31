@@ -10,10 +10,11 @@ function Profile({
   onEditProfile,
   onCardLike,
   isLoggedIn,
+  onLogout,
 }) {
   return (
     <div className="profile">
-      <SideBar onEditProfile={onEditProfile} />
+      <SideBar onEditProfile={onEditProfile} onLogout={onLogout} />
       <ClothesSection
         clothingItems={clothingItems}
         onCardClick={onCardClick}
