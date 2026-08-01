@@ -250,7 +250,6 @@ function App() {
   }
 
   function handleLogout() {
-    console.log("logout");
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
   }
