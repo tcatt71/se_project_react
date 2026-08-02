@@ -54,13 +54,7 @@ function App() {
   });
 
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-
-    if (!jwt) {
-      return;
-    }
-
-    getItems(jwt)
+    getItems()
       .then((data) => setClothingItems(data))
       .catch((err) => console.error(err.message));
   }, []);
@@ -181,7 +175,7 @@ function App() {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
 
-          return getItems(res.token)
+          return getItems()
             .then((data) => {
               setClothingItems(data);
               setIsLoggedIn(true);
