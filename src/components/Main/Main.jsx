@@ -14,7 +14,6 @@ function Main({
   condition,
   onCardClick,
   onCardLike,
-  isLoggedIn,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
@@ -42,7 +41,6 @@ function Main({
                   likes={item.likes}
                   onCardClick={onCardClick}
                   onCardLike={onCardLike}
-                  isLoggedIn={isLoggedIn}
                 />
               </li>
             ))}

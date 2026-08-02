@@ -9,7 +9,6 @@ function Profile({
   onAddItem,
   onEditProfile,
   onCardLike,
-  isLoggedIn,
   onLogout,
 }) {
   return (
@@ -20,7 +19,6 @@ function Profile({
         onCardClick={onCardClick}
         onAddItem={onAddItem}
         onCardLike={onCardLike}
-        isLoggedIn={isLoggedIn}
       />
     </div>
   );

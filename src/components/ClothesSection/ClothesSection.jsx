@@ -5,13 +5,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./ClothesSection.css";
 import "./../../layout/card-container.css";
 
-function ClothesSection({
-  clothingItems,
-  onCardClick,
-  onAddItem,
-  onCardLike,
-  isLoggedIn,
-}) {
+function ClothesSection({ clothingItems, onCardClick, onAddItem, onCardLike }) {
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
@@ -40,7 +34,6 @@ function ClothesSection({
                 likes={item.likes}
                 onCardClick={onCardClick}
                 onCardLike={onCardLike}
-                isLoggedIn={isLoggedIn}
               />
             </li>
           ))}

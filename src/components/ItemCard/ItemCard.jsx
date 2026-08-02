@@ -11,7 +11,6 @@ function ItemCard({
   owner,
   onCardLike,
   likes,
-  isLoggedIn = false,
 }) {
   const { currentUser } = useContext(CurrentUserContext);
 
@@ -34,17 +33,17 @@ function ItemCard({
     >
       <div className="item-card__header">
         <h2 className="item-card__title">{name}</h2>
-
-        <button
-          className={
-            isLiked
-              ? "button button_type_like button_liked"
-              : "button button_type_like button_disliked"
-          }
-          type="button"
-          onClick={handleLike}
-          disabled={!isLoggedIn}
-        />
+        {currentUser?._id && (
+          <button
+            className={
+              isLiked
+                ? "button button_type_like button_liked"
+                : "button button_type_like button_disliked"
+            }
+            type="button"
+            onClick={handleLike}
+          />
+        )}
       </div>
     </div>
   );

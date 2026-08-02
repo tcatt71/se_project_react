@@ -275,7 +275,6 @@ function App() {
                     condition={condition}
                     onCardClick={handleCardClick}
                     onCardLike={handleCardLike}
-                    isLoggedIn={isLoggedIn}
                   />
                 }
               />
@@ -289,7 +288,6 @@ function App() {
                       onAddItem={handleAddItem}
                       onEditProfile={handleEditProfile}
                       onCardLike={handleCardLike}
-                      isLoggedIn={isLoggedIn}
                       onLogout={handleLogout}
                     />
                   </ProtectedRoute>
