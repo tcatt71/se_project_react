@@ -71,13 +71,13 @@ function EditProfileModal({ isOpen, onClose, isLoading, setIsLoading }) {
       isValid={isValid}
       profileUpdateError={profileUpdateError}
     >
-      <label className="form__label form__label_block" htmlFor="name">
+      <label className="form__label form__label_block" htmlFor="name-update">
         Name *
       </label>
       <input
         className={`form__input ${touched.nameUpdate && errors.nameUpdate ? "form__input_invalid" : ""}`}
         type="text"
-        id="nameUpdate"
+        id="name-update"
         name="nameUpdate"
         value={values.nameUpdate}
         placeholder="Name"
@@ -89,13 +89,16 @@ function EditProfileModal({ isOpen, onClose, isLoading, setIsLoading }) {
       >
         {errors.nameUpdate || ""}
       </span>
-      <label className="form__label form__label_block" htmlFor="image">
+      <label
+        className="form__label form__label_block"
+        htmlFor="avatar-url-update"
+      >
         Avatar *
       </label>
       <input
         className={`form__input ${touched.avatarUrlUpdate && errors.avatarUrlUpdate ? "form__input_invalid" : ""}`}
         type="text"
-        id="avatarUrlUpdate"
+        id="avatar-url-update"
         name="avatarUrlUpdate"
         value={values.avatarUrlUpdate}
         placeholder="Avatar URL"
