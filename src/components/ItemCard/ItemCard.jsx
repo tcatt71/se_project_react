@@ -11,6 +11,7 @@ function ItemCard({
   owner,
   onCardLike,
   likes,
+  isLoggedIn,
 }) {
   const { currentUser } = useContext(CurrentUserContext);
 
@@ -33,7 +34,7 @@ function ItemCard({
     >
       <div className="item-card__header">
         <h2 className="item-card__title">{name}</h2>
-        {currentUser?._id && (
+        {isLoggedIn && (
           <button
             className={
               isLiked
