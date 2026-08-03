@@ -52,13 +52,13 @@ function AddItemModal({ isOpen, onAddItem, onClose, isLoading }) {
       name={"add-garment"}
       isValid={isValid}
     >
-      <label className="form__label form__label_block" htmlFor="name">
+      <label className="form__label form__label_block" htmlFor="add-item-name">
         Name
       </label>
       <input
         className={`form__input ${touched.name && errors.name ? "form__input_invalid" : ""}`}
         type="text"
-        id="name"
+        id="add-item-name"
         name="name"
         value={values.name}
         placeholder="Name"
