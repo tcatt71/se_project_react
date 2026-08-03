@@ -155,7 +155,6 @@ function App() {
       .catch((err) => {
         console.error(err.message);
         setIsLoading(false);
-        handleCloseModal();
       });
   }
 
@@ -181,9 +180,10 @@ function App() {
               setIsLoggedIn(true);
             })
             .then(() => checkToken(res.token))
-            .then(({ name, avatar, email, _id }) =>
-              setCurrentUser({ name, avatar, email, _id }),
-            )
+            .then(({ name, avatar, email, _id }) => {
+              setCurrentUser({ name, avatar, email, _id });
+              handleCloseModal();
+            })
             .catch((err) => {
               console.error(err.message);
               localStorage.removeItem("jwt");
@@ -193,7 +193,6 @@ function App() {
       .catch((err) => console.error("Login failed:", err))
       .finally(() => {
         setIsLoading(false);
-        handleCloseModal();
       });
   }
 
