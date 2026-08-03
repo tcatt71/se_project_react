@@ -68,7 +68,7 @@ function Header({
               + Add clothes
             </button>
             <Link to="/profile" className="header__link-wrapper">
-              <span className="header__user-name">{name}</span>
+              <span className="header__user-name">{currentUser?.name}</span>
               {currentUser?.avatar ? (
                 <div className="header__avatar-container">
                   <img
