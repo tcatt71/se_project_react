@@ -245,6 +245,7 @@ function App() {
   function handleLogout() {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
+    setCurrentUser({ name: "", avatar: "", email: "", _id: "" });
   }
 
   const condition = getWeatherCondition(weatherData.temperature.F);
