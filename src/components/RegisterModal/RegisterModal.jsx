@@ -56,13 +56,13 @@ function RegisterModal({ isOpen, onRegisterSubmit, onClose, isLoading }) {
       showOrButton={true}
       isValid={isValid}
     >
-      <label className="form__label form__label_block" htmlFor="email">
+      <label className="form__label form__label_block" htmlFor="register-email">
         Email*
       </label>
       <input
         className={`form__input ${touched.email && errors.email ? "form__input_invalid" : ""}`}
         type="email"
-        id="email"
+        id="register-email"
         name="email"
         value={values.email}
         placeholder="Email"
@@ -75,13 +75,16 @@ function RegisterModal({ isOpen, onRegisterSubmit, onClose, isLoading }) {
         {errors.email || ""}
       </span>
 
-      <label className="form__label form__label_block" htmlFor="password">
+      <label
+        className="form__label form__label_block"
+        htmlFor="register-password"
+      >
         Password*
       </label>
       <input
         className={`form__input ${touched.password && errors.password ? "form__input_invalid" : ""}`}
         type="password"
-        id="password"
+        id="register-password"
         name="password"
         value={values.password}
         placeholder="Password"

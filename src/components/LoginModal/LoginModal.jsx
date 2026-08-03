@@ -53,13 +53,13 @@ function LoginModal({ isOpen, onLoginSubmit, onClose, isLoading }) {
       isValid={isValid}
     >
       <div className="form__input_container">
-        <label className="form__label form__label_block" htmlFor="email">
+        <label className="form__label form__label_block" htmlFor="login-email">
           Email
         </label>
         <input
           className={`form__input ${touched.email && errors.email ? "form__input_invalid" : ""}`}
           type="email"
-          id="email"
+          id="login-email"
           name="email"
           value={values.email}
           placeholder="Email"
@@ -72,13 +72,16 @@ function LoginModal({ isOpen, onLoginSubmit, onClose, isLoading }) {
           {errors.email || ""}
         </span>
 
-        <label className="form__label form__label_block" htmlFor="password">
+        <label
+          className="form__label form__label_block"
+          htmlFor="login-password"
+        >
           Password
         </label>
         <input
           className={`form__input ${touched.password && errors.password ? "form__input_invalid" : ""}`}
           type="password"
-          id="password"
+          id="login-password"
           name="password"
           value={values.password}
           placeholder="Password"
