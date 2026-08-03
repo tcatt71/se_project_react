@@ -304,6 +304,7 @@ function App() {
             selectedCard={selectedCard}
             onDeleteItem={handleDeleteItem}
             isLoading={isLoading}
+            isLoggedIn={isLoggedIn}
           ></ItemModal>
           <AddItemModal
             isOpen={activeModal === "add-garment"}

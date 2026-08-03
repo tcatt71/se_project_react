@@ -2,7 +2,14 @@ import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./ItemModal.css";
 
-function ItemModal({ isOpen, onClose, selectedCard, onDeleteItem, isLoading }) {
+function ItemModal({
+  isOpen,
+  onClose,
+  selectedCard,
+  onDeleteItem,
+  isLoading,
+  isLoggedIn,
+}) {
   const backgroundImage = {
     backgroundImage: `url(${selectedCard.link})`,
   };
@@ -26,7 +33,7 @@ function ItemModal({ isOpen, onClose, selectedCard, onDeleteItem, isLoading }) {
               Weather: {selectedCard.weather}
             </p>
           </div>
-          {isOwn && (
+          {isLoggedIn && isOwn && (
             <button
               type="button"
               className="button button_color_red item-modal__delete-button"
