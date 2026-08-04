@@ -15,18 +15,8 @@ function AddItemModal({ isOpen, onAddItem, onClose, isLoading }) {
     });
 
   useEffect(() => {
-    if (isOpen) {
-      handleReset();
-      setTouched({});
-    }
-  }, [isOpen, handleReset]);
-
-  // Reset form state when modal closes to clear any lingering error display
-  useEffect(() => {
-    if (!isOpen) {
-      handleReset();
-      setTouched({});
-    }
+    handleReset();
+    setTouched({});
   }, [isOpen, handleReset]);
 
   function handleSubmit(e) {
