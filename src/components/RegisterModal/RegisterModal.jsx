@@ -47,7 +47,7 @@ function RegisterModal({
       onClose={onClose}
       onSubmit={handleSubmit}
       title={"Sign up"}
-      submitButtonText={isLoading ? "Saving..." : "Next"}
+      submitButtonText={isLoading ? "Saving..." : "Sign Up"}
       orButtonText={"or Log In"}
       name={"register"}
       showOrButton={true}
