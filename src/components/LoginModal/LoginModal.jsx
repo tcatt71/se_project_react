@@ -5,7 +5,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 import "./../Form/Form.css";
 
-function LoginModal({ isOpen, onLoginSubmit, onClose, isLoading }) {
+function LoginModal({ isOpen, onLoginSubmit, onClose, isLoading, onRegister }) {
   const [touched, setTouched] = useState({});
   const { values, handleChange, handleReset, errors, isValid } =
     useFormWithValidation({
@@ -51,6 +51,7 @@ function LoginModal({ isOpen, onLoginSubmit, onClose, isLoading }) {
       name={"login"}
       showOrButton={true}
       isValid={isValid}
+      onClick={onRegister}
     >
       <div className="form__input_container">
         <label className="form__label form__label_block" htmlFor="login-email">
