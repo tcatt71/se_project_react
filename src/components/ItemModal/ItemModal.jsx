@@ -1,0 +1,52 @@
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import "./ItemModal.css";
+
+function ItemModal({
+  isOpen,
+  onClose,
+  selectedCard,
+  onDeleteItem,
+  isLoading,
+  isLoggedIn,
+}) {
+  const { currentUser } = useContext(CurrentUserContext);
+  const isOwn = selectedCard.owner === currentUser?._id;
+
+  return (
+    <div className={`modal ${isOpen ? "modal_isOpened" : ""}`}>
+      <div className="item-modal">
+        <button
+          className="button button_type_close button_color_white item-modal__button_type_close"
+          onClick={onClose}
+        >
+          &#10005;
+        </button>
+        <img
+          className="item-modal__image"
+          src={selectedCard.link}
+          alt={selectedCard.name}
+        />
+        <div className="item-modal__footer">
+          <div>
+            <h2 className="item-modal__title">{selectedCard.name}</h2>
+            <p className="item-modal__weather">
+              Weather: {selectedCard.weather}
+            </p>
+          </div>
+          {isLoggedIn && isOwn && (
+            <button
+              type="button"
+              className="button button_color_red item-modal__delete-button"
+              onClick={() => onDeleteItem(selectedCard.itemId)}
+            >
+              {isLoading ? "Deleting..." : "Delete item"}
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default ItemModal;
