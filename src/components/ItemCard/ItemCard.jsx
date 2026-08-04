@@ -15,10 +15,6 @@ function ItemCard({
 }) {
   const { currentUser } = useContext(CurrentUserContext);
 
-  const backgroundImage = {
-    backgroundImage: `url(${link})`,
-  };
-
   const isLiked = likes?.some((id) => id === currentUser?._id);
 
   function handleLike(e) {
@@ -29,7 +25,6 @@ function ItemCard({
   return (
     <div
       className="item-card"
-      style={backgroundImage}
       onClick={() => onCardClick({ itemId, name, link, weather, owner })}
     >
       <div className="item-card__header">
@@ -46,6 +41,7 @@ function ItemCard({
           />
         )}
       </div>
+      <img className="item-card__image" src={link} alt={name} />
     </div>
   );
 }
