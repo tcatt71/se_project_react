@@ -13,6 +13,7 @@ function ModalWithForm({
   isValid,
   showOrButton,
   profileUpdateError,
+  onClick,
 }) {
   return (
     <div
@@ -44,7 +45,11 @@ function ModalWithForm({
             {submitButtonText}
           </button>
           {showOrButton && (
-            <button className="button button_type_or" type="button">
+            <button
+              className="button button_type_or"
+              type="button"
+              onClick={onClick}
+            >
               {orButtonText}
             </button>
           )}

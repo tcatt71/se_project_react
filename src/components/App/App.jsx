@@ -317,6 +317,7 @@ function App() {
             onClose={handleCloseModal}
             onRegisterSubmit={handleRegisterSubmit}
             isLoading={isLoading}
+            onLogin={handleLogin}
           ></RegisterModal>
           <LoginModal
             isOpen={activeModal === "login"}

@@ -6,7 +6,13 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./../Form/Form.css";
 import "./../RegisterModal/RegisterModal.css";
 
-function RegisterModal({ isOpen, onRegisterSubmit, onClose, isLoading }) {
+function RegisterModal({
+  isOpen,
+  onRegisterSubmit,
+  onClose,
+  isLoading,
+  onLogin,
+}) {
   const [touched, setTouched] = useState({});
   const { values, handleChange, handleReset, errors, isValid } =
     useFormWithValidation({
@@ -55,6 +61,7 @@ function RegisterModal({ isOpen, onRegisterSubmit, onClose, isLoading }) {
       name={"register"}
       showOrButton={true}
       isValid={isValid}
+      onClick={onLogin}
     >
       <label className="form__label form__label_block" htmlFor="register-email">
         Email*
